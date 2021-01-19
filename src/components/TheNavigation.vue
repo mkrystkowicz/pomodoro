@@ -33,7 +33,7 @@
   }
 
   &__link {
-    font-size: 0.6em;
+    font-size: 0.7em;
     padding: 1rem;
     z-index: 2;
     color: lighten($base-color, 100%);

@@ -8,5 +8,7 @@
   font-size: $logo-font-size;
   color: $white;
   text-decoration: none;
+  font-weight: 600;
+  font-style: italic;
 }
 </style>
