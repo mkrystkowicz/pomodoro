@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     counterClicked(counterType) {
-      this.$store.dispatch("handleClock", counterType);
+      this.$store.dispatch("handleCounter", counterType);
     }
   },
   computed: {

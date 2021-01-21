@@ -15,12 +15,12 @@ export default {
   },
   data() {
     return {
-      counterType: "pomodoro-clock"
+      counterType: "pomodoro-counter"
     };
   },
   methods: {
     counterClicked(counterType) {
-      this.$store.dispatch("handleClock", counterType);
+      this.$store.dispatch("handleCounter", counterType);
     }
   },
   computed: {

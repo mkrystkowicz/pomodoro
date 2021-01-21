@@ -2,21 +2,21 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    clocks: [
+    counters: [
       {
-        clockType: "pomodoro-clock",
+        counterType: "pomodoro-counter",
         amount: 10000,
         paused: false,
         isRunning: false
       },
       {
-        clockType: "short-break",
+        counterType: "short-break",
         amount: 10000,
         paused: false,
         isRunning: false
       },
       {
-        clockType: "long-break",
+        counterType: "long-break",
         amount: 10000,
         paused: false,
         isRunning: false
@@ -24,21 +24,25 @@ export default createStore({
     ]
   },
   getters: {
-    getPomodoroTime: state => clockType => {
-      const clock = state.clocks.find(clock => clock.clockType === clockType);
+    getPomodoroTime: state => counterType => {
+      const counter = state.counters.find(
+        counter => counter.counterType === counterType
+      );
 
-      return clock.amount;
+      return counter.amount;
     }
   },
   mutations: {
-    decrementTime: (state, clockType) => {
-      const clock = state.clocks.find(clock => clock.clockType === clockType);
-      if (clock.amount === 0) return 0;
-      else return (clock.amount -= 1000);
+    decrementTime: (state, counterType) => {
+      const counter = state.counters.find(
+        counter => counter.counterType === counterType
+      );
+      if (counter.amount === 0) return 0;
+      else return (counter.amount -= 1000);
     }
   },
   actions: {
-    handleClock({ commit }, payload) {
+    handleCounter({ commit }, payload) {
       commit("decrementTime", payload);
     }
   }
