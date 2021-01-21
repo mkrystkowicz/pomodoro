@@ -1,13 +1,32 @@
 <template>
-  <TheCounter />
+  <the-counter
+    @counter-clicked="counterClicked"
+    :counter-type="counterType"
+    :time="pomodoroTimeInMs"
+  ></the-counter>
 </template>
 
 <script>
-import TheCounter from "../components/TheCounter.vue";
+import TheCounter from "@/components/TheCounter.vue";
 
 export default {
   components: {
     TheCounter
+  },
+  data() {
+    return {
+      counterType: "pomodoro-clock"
+    };
+  },
+  methods: {
+    counterClicked(counterType) {
+      this.$store.dispatch("handleClock", counterType);
+    }
+  },
+  computed: {
+    pomodoroTimeInMs() {
+      return this.$store.getters.getPomodoroTime(this.counterType);
+    }
   }
 };
 </script>
