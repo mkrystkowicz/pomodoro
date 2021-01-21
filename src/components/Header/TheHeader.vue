@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import TheLogo from "../components/TheLogo.vue";
-import TheNavigation from "../components/TheNavigation.vue";
+import TheLogo from "@/components/Header/TheLogo.vue";
+import TheNavigation from "@/components/Header/TheNavigation.vue";
 
 export default {
   components: {

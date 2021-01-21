@@ -3,7 +3,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../scss/_base.scss";
+@import "@/scss/_base.scss";
 .logo {
   font-size: $logo-font-size;
   color: $white;
