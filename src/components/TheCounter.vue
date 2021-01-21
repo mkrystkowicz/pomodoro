@@ -3,7 +3,7 @@
     <div class="counter__face">
       <div class="counter__border"></div>
       <div class="counter__timer">
-        <div class="counter__time">03'23</div>
+        <div class="counter__time">{{ convertedTime }}</div>
         <span class="counter__action">pause</span>
       </div>
     </div>
@@ -12,7 +12,16 @@
 
 <script>
 export default {
-  props: ["time"]
+  props: ["time"],
+  computed: {
+    convertedTime() {
+      const timeInMs = this.time;
+      const minutes = Math.floor(timeInMs / 60000);
+      const seconds = ((timeInMs % 60000) / 1000).toFixed(0);
+
+      return minutes + "'" + (seconds < 10 ? "0" : "") + seconds;
+    }
+  }
 };
 </script>
 
