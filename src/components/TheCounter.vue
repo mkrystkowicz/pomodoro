@@ -1,11 +1,10 @@
 <template>
   <div class="counter">
     <div class="counter__face">
-      <div class="counter__border">
-        <div class="counter__timer">
-          <div class="counter__time">03'23</div>
-          <span class="counter__action">pause</span>
-        </div>
+      <div class="counter__border"></div>
+      <div class="counter__timer">
+        <div class="counter__time">03'23</div>
+        <span class="counter__action">pause</span>
       </div>
     </div>
   </div>
@@ -33,6 +32,7 @@ export default {
     background-color: darken($base-color, 2%);
     border-radius: 150%;
     position: relative;
+    box-shadow: $base-box-shadow;
 
     @media (min-width: 1200px) {
       width: $desktop-clock-face;
@@ -47,8 +47,21 @@ export default {
     height: $mobile-clock-border;
     top: 50%;
     left: 50%;
+    transform-origin: center;
     transform: translate(-50%, -50%);
     border-radius: 50rem;
+
+    &::after {
+      content: "";
+      width: 0.3rem;
+      height: 1.3rem;
+      // background-color: darken($base-color, 2%);
+      background-color: white;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -70%);
+    }
 
     @media (min-width: 1200px) {
       width: $desktop-clock-border;
