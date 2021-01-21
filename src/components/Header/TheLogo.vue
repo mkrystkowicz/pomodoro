@@ -1,5 +1,5 @@
 <template>
-  <router-link class="logo" to="/">pomodoro</router-link>
+  <router-link class="logo uselectable" to="/">pomodoro</router-link>
 </template>
 
 <style lang="scss" scoped>

@@ -1,10 +1,10 @@
 <template>
   <div class="counter">
-    <div class="counter__face">
+    <div class="counter__face" @click="handleClick">
       <div class="counter__border"></div>
       <div class="counter__timer">
-        <div class="counter__time">{{ convertedTime }}</div>
-        <span class="counter__action">pause</span>
+        <div class="counter__time uselectable">{{ convertedTime }}</div>
+        <span class="counter__action uselectable">pause</span>
       </div>
     </div>
   </div>
@@ -13,6 +13,11 @@
 <script>
 export default {
   props: ["time"],
+  methods: {
+    handleClick() {
+      this.$emit("pauseCounter");
+    }
+  },
   computed: {
     convertedTime() {
       const timeInMs = this.time;
@@ -42,6 +47,12 @@ export default {
     border-radius: 150%;
     position: relative;
     box-shadow: $base-box-shadow;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $hover-box-shadow;
+    }
 
     @media (min-width: 1200px) {
       width: $desktop-clock-face;
@@ -95,6 +106,7 @@ export default {
     font-weight: 600;
     font-style: italic;
     letter-spacing: 0.2rem;
+    user-select: none;
   }
 
   &__action {
@@ -103,6 +115,7 @@ export default {
     text-align: center;
     font-weight: 300;
     font-style: normal;
+    user-select: none;
   }
 }
 </style>

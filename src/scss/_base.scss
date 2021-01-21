@@ -4,6 +4,7 @@ $sec-color: #53b835;
 $th-color: #202020;
 
 $base-box-shadow: 0 8px 6px -6px black;
+$hover-box-shadow: 0 8px 6px -8px darken($sec-color, 20%);
 
 $base-border-radius: 3rem;
 
@@ -21,4 +22,8 @@ $desktop-clock-border: 21rem;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.uselectable {
+  user-select: none;
 }

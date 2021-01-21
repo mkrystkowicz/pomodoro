@@ -1,9 +1,15 @@
 <template>
   <nav class="nav">
     <ul class="nav__list">
-      <router-link class="nav__link" to="/pomodoro">pomodoro</router-link>
-      <router-link class="nav__link" to="/short-break">short break</router-link>
-      <router-link class="nav__link" to="/long-break">long break</router-link>
+      <router-link class="nav__link uselectable" to="/pomodoro"
+        >pomodoro</router-link
+      >
+      <router-link class="nav__link uselectable" to="/short-break"
+        >short break</router-link
+      >
+      <router-link class="nav__link uselectable" to="/long-break"
+        >long break</router-link
+      >
     </ul>
   </nav>
 </template>
@@ -16,6 +22,7 @@
   background-color: darken($base-color, 3%);
   border-radius: $base-border-radius;
   box-shadow: $base-box-shadow;
+  overflow: hidden;
 
   &__indicator {
     position: absolute;
@@ -40,6 +47,10 @@
     color: lighten($base-color, 100%);
     text-decoration: none;
     text-align: center;
+
+    &:hover {
+      color: lighten($base-color, 35%);
+    }
 
     &.router-link-active {
       background-color: $sec-color;
