@@ -15,6 +15,7 @@
   padding: 0.2rem;
   background-color: darken($base-color, 3%);
   border-radius: $base-border-radius;
+  box-shadow: $base-box-shadow;
 
   &__indicator {
     position: absolute;
