@@ -12,10 +12,10 @@
 
 <script>
 export default {
-  props: ["time"],
+  props: ["time", "counterType"],
   methods: {
     handleClick() {
-      this.$emit("pauseCounter");
+      this.$emit("counterClicked", this.counterType);
     }
   },
   computed: {

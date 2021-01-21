@@ -9,6 +9,11 @@
   color: $white;
   text-decoration: none;
   font-weight: 600;
+  transition: 0.3s ease-out;
   font-style: italic;
+
+  &:hover {
+    color: darken($white, 35%);
+  }
 }
 </style>

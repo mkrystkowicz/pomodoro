@@ -47,6 +47,7 @@
     color: lighten($base-color, 100%);
     text-decoration: none;
     text-align: center;
+    transition: 0.3s ease-out;
 
     &:hover {
       color: lighten($base-color, 35%);
