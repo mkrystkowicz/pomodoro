@@ -5,6 +5,9 @@
       <div class="counter__timer">
         <div class="counter__time uselectable">{{ convertedTime }}</div>
         <span class="counter__action uselectable">{{ indicateState }}</span>
+        <button class="counter__btn" id="reset-btn">
+          Reset
+        </button>
       </div>
     </div>
   </div>
@@ -14,9 +17,14 @@
 export default {
   props: ["time", "counterType", "counterState"],
   methods: {
-    handleClick() {
-      this.$emit("counterClicked", this.counterType);
-    }
+    handleClick(e) {
+      if (e.target.id === "reset-btn") {
+        this.$store.commit("resetCounter", this.counterType);
+      } else {
+        this.$emit("counterClicked", this.counterType);
+      }
+    },
+    resetCounter() {}
   },
   computed: {
     convertedTime() {
@@ -120,6 +128,25 @@ export default {
     font-weight: 300;
     font-style: normal;
     user-select: none;
+  }
+
+  &__btn {
+    font-size: $base-font-size;
+    font-family: $base-font-family;
+    margin-top: 30px;
+    padding: 5px 25px;
+    color: $base-color;
+    background-color: $white;
+    border-radius: $base-border-radius;
+    border: none;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $base-color;
+      color: $white;
+      padding: 8px 30px;
+    }
   }
 }
 </style>
