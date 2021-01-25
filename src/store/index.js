@@ -21,12 +21,19 @@ export default createStore({
     ]
   },
   getters: {
-    getPomodoroTime: state => counterType => {
+    getCounterTime: state => counterType => {
       const counter = state.counters.find(
         counter => counter.counterType === counterType
       );
 
       return counter.amount;
+    },
+    getCounterState: state => counterType => {
+      const counter = state.counters.find(
+        counter => counter.counterType === counterType
+      );
+
+      return counter.isRunning;
     }
   },
   mutations: {

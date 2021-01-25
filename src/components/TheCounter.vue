@@ -4,7 +4,7 @@
       <div class="counter__border"></div>
       <div class="counter__timer">
         <div class="counter__time uselectable">{{ convertedTime }}</div>
-        <span class="counter__action uselectable">pause</span>
+        <span class="counter__action uselectable">{{ indicateState }}</span>
       </div>
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ["time", "counterType"],
+  props: ["time", "counterType", "counterState"],
   methods: {
     handleClick() {
       this.$emit("counterClicked", this.counterType);
@@ -25,6 +25,10 @@ export default {
       const seconds = ((timeInMs % 60000) / 1000).toFixed(0);
 
       return minutes + "'" + (seconds < 10 ? "0" : "") + seconds;
+    },
+    indicateState() {
+      if (!this.counterState) return "play";
+      else return "pause";
     }
   }
 };

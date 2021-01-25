@@ -2,7 +2,8 @@
   <the-counter
     @counter-clicked="counterClicked"
     :counter-type="counterType"
-    :time="pomodoroTimeInMs"
+    :counter-state="getCounterState"
+    :time="counterTimeInMs"
   ></the-counter>
 </template>
 
@@ -24,8 +25,11 @@ export default {
     }
   },
   computed: {
-    pomodoroTimeInMs() {
-      return this.$store.getters.getPomodoroTime(this.counterType);
+    counterTimeInMs() {
+      return this.$store.getters.getCounterTime(this.counterType);
+    },
+    getCounterState() {
+      return this.$store.getters.getCounterState(this.counterType);
     }
   }
 };
