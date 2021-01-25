@@ -1,7 +1,10 @@
 <template>
   <div class="counter">
     <div class="counter__face" @click="handleClick">
-      <div class="counter__border"></div>
+      <div
+        class="counter__border"
+        :style="counterState ? transformBorder : ''"
+      ></div>
       <div class="counter__timer">
         <div class="counter__time uselectable">{{ convertedTime }}</div>
         <span class="counter__action uselectable">{{ indicateState }}</span>
@@ -15,7 +18,7 @@
 
 <script>
 export default {
-  props: ["time", "counterType", "counterState"],
+  props: ["totalTime", "time", "counterType", "counterState"],
   methods: {
     handleClick(e) {
       if (e.target.id === "reset-btn") {
@@ -24,11 +27,16 @@ export default {
         this.$emit("counterClicked", this.counterType);
       }
     },
-    resetCounter() {}
+    calculateTimePassed() {
+      const totalTime = this.totalTime;
+      const timeLeft = this.time;
+
+      return totalTime - timeLeft;
+    }
   },
   computed: {
-    convertedTime() {
-      const timeInMs = this.time;
+    convertedTime(ms) {
+      const timeInMs = this.time || ms;
       const minutes = Math.floor(timeInMs / 60000);
       const seconds = ((timeInMs % 60000) / 1000).toFixed(0);
 
@@ -37,6 +45,21 @@ export default {
     indicateState() {
       if (!this.counterState) return "play";
       else return "pause";
+    },
+    transformBorder() {
+      const timePassed = this.calculateTimePassed();
+      const totalTime = this.totalTime;
+      const timePassedInPercentages = ((timePassed / totalTime) * 100) / 100;
+      const degrees = 360 * timePassedInPercentages;
+      const reverseDegrees = -degrees;
+
+      const cssRules = `
+        transform: 
+          translate(-50%,-50%)
+          rotate(${reverseDegrees}deg);
+      `;
+
+      return cssRules;
     }
   }
 };
@@ -80,14 +103,14 @@ export default {
     top: 50%;
     left: 50%;
     transform-origin: center;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(0deg);
     border-radius: 50rem;
+    transition: 0.3s linear;
 
     &::after {
       content: "";
       width: 0.3rem;
       height: 1.3rem;
-      // background-color: darken($base-color, 2%);
       background-color: white;
       position: absolute;
       top: 0;
