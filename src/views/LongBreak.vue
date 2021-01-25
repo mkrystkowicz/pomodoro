@@ -3,7 +3,7 @@
     @counter-clicked="counterClicked"
     :counter-type="counterType"
     :counter-state="getCounterState"
-    :time="counterTimeInMs"
+    :time="getCounterTimeLeft"
   ></the-counter>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    counterTimeInMs() {
+    getCounterTimeLeft() {
       return this.$store.getters.getCounterTimeLeft(this.counterType);
     },
     getCounterState() {
