@@ -1,6 +1,7 @@
 <template>
   <the-counter
     @counter-clicked="counterClicked"
+    :counter-type="counterType"
     :counter-state="getCounterState"
     :time="counterTimeInMs"
   ></the-counter>
@@ -25,7 +26,10 @@ export default {
   },
   computed: {
     counterTimeInMs() {
-      return this.$store.getters.getCounterTime(this.counterType);
+      return this.$store.getters.getCounterTimeLeft(this.counterType);
+    },
+    getCounterState() {
+      return this.$store.getters.getCounterState(this.counterType);
     }
   }
 };
