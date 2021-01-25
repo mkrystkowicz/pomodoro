@@ -5,28 +5,31 @@ export default createStore({
     counters: [
       {
         counterType: "pomodoro-counter",
-        amount: 10000,
+        totalTime: 10000,
+        timeLeft: 10000,
         isRunning: false
       },
       {
         counterType: "short-break",
-        amount: 10000,
+        totalTime: 10000,
+        timeLeft: 10000,
         isRunning: false
       },
       {
         counterType: "long-break",
-        amount: 10000,
+        totalTime: 10000,
+        timeLeft: 10000,
         isRunning: false
       }
     ]
   },
   getters: {
-    getCounterTime: state => counterType => {
+    getCounterTimeLeft: state => counterType => {
       const counter = state.counters.find(
         counter => counter.counterType === counterType
       );
 
-      return counter.amount;
+      return counter.timeLeft;
     },
     getCounterState: state => counterType => {
       const counter = state.counters.find(
@@ -41,8 +44,15 @@ export default createStore({
       const counter = state.counters.find(
         counter => counter.counterType === counterType
       );
-      if (counter.amount === 0) return 0;
-      else return (counter.amount -= 200);
+      if (counter.timeLeft === 0) return 0;
+      else return (counter.timeLeft -= 200);
+    },
+    resetCounter: (state, counterType) => {
+      const counter = state.counters.find(
+        counter => counter.counterType === counterType
+      );
+
+      counter.timeLeft = counter.totalTime;
     }
   },
   actions: {
