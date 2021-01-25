@@ -6,19 +6,16 @@ export default createStore({
       {
         counterType: "pomodoro-counter",
         amount: 10000,
-        paused: false,
         isRunning: false
       },
       {
         counterType: "short-break",
         amount: 10000,
-        paused: false,
         isRunning: false
       },
       {
         counterType: "long-break",
         amount: 10000,
-        paused: false,
         isRunning: false
       }
     ]
@@ -38,12 +35,26 @@ export default createStore({
         counter => counter.counterType === counterType
       );
       if (counter.amount === 0) return 0;
-      else return (counter.amount -= 1000);
+      else return (counter.amount -= 200);
     }
   },
   actions: {
-    handleCounter({ commit }, payload) {
-      commit("decrementTime", payload);
+    handleCounter({ state, commit }, counterType) {
+      const counter = state.counters.find(
+        counter => counter.counterType === counterType
+      );
+
+      let interval;
+
+      if (!counter.isRunning) {
+        counter.isRunning = true;
+        interval = setInterval(() => {
+          if (!counter.isRunning) clearInterval(interval);
+          commit("decrementTime", counterType);
+        }, 200);
+      } else if (counter.isRunning) {
+        counter.isRunning = false;
+      }
     }
   }
 });
