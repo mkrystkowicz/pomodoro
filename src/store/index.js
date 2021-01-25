@@ -5,8 +5,8 @@ export default createStore({
     counters: [
       {
         counterType: "pomodoro-counter",
-        totalTime: 10000,
-        timeLeft: 10000,
+        totalTime: 2000000,
+        timeLeft: 2000000,
         isRunning: false
       },
       {
@@ -24,6 +24,13 @@ export default createStore({
     ]
   },
   getters: {
+    getCounterTotalTime: state => counterType => {
+      const counter = state.counters.find(
+        counter => counter.counterType === counterType
+      );
+
+      return counter.totalTime;
+    },
     getCounterTimeLeft: state => counterType => {
       const counter = state.counters.find(
         counter => counter.counterType === counterType
