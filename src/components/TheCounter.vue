@@ -8,16 +8,23 @@
       <div class="counter__timer">
         <div class="counter__time uselectable">{{ convertedTime }}</div>
         <span class="counter__action uselectable">{{ indicateState }}</span>
-        <button class="counter__btn uselectable" id="reset-btn">
+        <the-button
+          type="counter"
+          class="counter__btn uselectable"
+          id="reset-btn"
+        >
           Reset
-        </button>
+        </the-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import TheButton from "@/components/TheButton.vue";
+
 export default {
+  components: { TheButton },
   props: ["totalTime", "time", "counterType", "counterState"],
   methods: {
     handleClick(e) {
@@ -154,20 +161,9 @@ export default {
   }
 
   &__btn {
-    font-size: $base-font-size;
-    font-family: $base-font-family;
     margin-top: 30px;
-    padding: 5px 25px;
-    color: $base-color;
-    background-color: $white;
-    border-radius: $base-border-radius;
-    border: none;
-    transition: all 0.2s ease-out;
-    cursor: pointer;
 
     &:hover {
-      background-color: $base-color;
-      color: $white;
       padding: 8px 30px;
     }
   }
