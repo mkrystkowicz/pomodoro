@@ -111,6 +111,11 @@ export default {
       background-color: lighten($base-color, 10%);
       color: darken($white, 10%);
     }
+
+    &:focus {
+      transform: scaleX(1.1);
+      outline: none;
+    }
   }
 }
 
