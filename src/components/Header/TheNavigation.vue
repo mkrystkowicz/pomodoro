@@ -1,13 +1,13 @@
 <template>
   <nav class="nav">
     <ul class="nav__list">
-      <router-link class="nav__link uselectable" to="/pomodoro"
+      <router-link class="nav__link unselectable" to="/pomodoro"
         >pomodoro</router-link
       >
-      <router-link class="nav__link uselectable" to="/short-break"
+      <router-link class="nav__link unselectable" to="/short-break"
         >short break</router-link
       >
-      <router-link class="nav__link uselectable" to="/long-break"
+      <router-link class="nav__link unselectable" to="/long-break"
         >long break</router-link
       >
     </ul>
@@ -47,7 +47,7 @@
     color: lighten($base-color, 100%);
     text-decoration: none;
     text-align: center;
-    transition: 0.3s ease-out;
+    transition: 0.2s ease-out;
 
     &:hover {
       color: lighten($base-color, 35%);
