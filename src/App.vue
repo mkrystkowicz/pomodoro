@@ -49,7 +49,7 @@ export default {
 
 .view-container {
   display: flex;
-  height: 80vh;
+  height: 70vh;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
