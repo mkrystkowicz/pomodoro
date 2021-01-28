@@ -6,11 +6,11 @@
         :style="counterState ? transformBorder : ''"
       ></div>
       <div class="counter__timer">
-        <div class="counter__time uselectable">{{ convertedTime }}</div>
-        <span class="counter__action uselectable">{{ indicateState }}</span>
+        <div class="counter__time unselectable">{{ convertedTime }}</div>
+        <span class="counter__action unselectable">{{ indicateState }}</span>
         <the-button
           type="counter"
-          class="counter__btn uselectable"
+          class="counter__btn unselectable"
           id="reset-btn"
         >
           Reset
@@ -76,12 +76,6 @@ export default {
 @import "../scss/_base.scss";
 
 .counter {
-  display: flex;
-  height: 70vh;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
   &__face {
     width: $mobile-clock-face;
     height: $mobile-clock-face;

@@ -36,7 +36,9 @@
     <template #footer>
       <div class="settings__buttons">
         <the-button class="" look="primary">save</the-button>
-        <the-button look="flat">cancel</the-button>
+        <the-button look="flat" @click="$emit('closeModal')">
+          cancel
+        </the-button>
       </div>
     </template>
   </the-modal>
@@ -50,7 +52,8 @@ export default {
   components: {
     TheModal,
     TheButton
-  }
+  },
+  emits: ["closeModal"]
 };
 </script>
 

@@ -32,6 +32,7 @@
   background: $white;
   color: $base-color;
   border-radius: $modal-border-radius;
+  animation: 0.4s modalAnimation ease-in-out;
 
   &__title {
     width: 100%;
@@ -53,6 +54,17 @@
 
   @media (min-width: 850px) {
     width: 40vw;
+  }
+}
+
+@keyframes modalAnimation {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
   }
 }
 </style>
