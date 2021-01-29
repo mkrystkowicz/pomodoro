@@ -72,6 +72,10 @@ export default {
   @media (min-width: 850px) {
     width: 40vw;
   }
+
+  @media (min-width: 1000px) {
+    width: 25vw;
+  }
 }
 
 @keyframes modalAnimation {
