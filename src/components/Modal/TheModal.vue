@@ -1,5 +1,6 @@
 <template>
   <teleport to="body">
+    <div class="background" @click="$emit('closeModal')"></div>
     <div class="modal-container">
       <div class="modal-container__title">
         <slot name="title"></slot>
@@ -14,14 +15,30 @@
   </teleport>
 </template>
 
+<script>
+export default {
+  emits: ["closeModal"]
+};
+</script>
+
 <style lang="scss" scoped>
 @import "@/scss/_base.scss";
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
 
 .modal-container {
   position: fixed;
   padding: $modal-padding;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

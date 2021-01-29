@@ -1,5 +1,5 @@
 <template>
-  <the-modal class="settings">
+  <the-modal @closeModal="$emit('closeModal')" class="settings">
     <template #title>
       <h2 class="settings__title">settings</h2>
     </template>
