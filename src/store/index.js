@@ -60,6 +60,7 @@ export default createStore({
       );
 
       counter.timeLeft = counter.totalTime;
+      counter.isRunning = false;
     }
   },
   actions: {
