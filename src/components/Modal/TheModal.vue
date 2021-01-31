@@ -74,6 +74,10 @@ export default {
   }
 
   @media (min-width: 1000px) {
+    width: 35vw;
+  }
+
+  @media (min-width: 1400px) {
     width: 25vw;
   }
 }

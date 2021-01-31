@@ -41,7 +41,7 @@
   }
 
   &__link {
-    font-size: 0.7em;
+    font-size: 0.7rem;
     padding: 1rem;
     z-index: 2;
     color: lighten($base-color, 100%);
@@ -58,6 +58,10 @@
       color: darken($sec-color, 100%);
       border-radius: $base-border-radius;
       transition: 0.3s ease-in-out;
+    }
+
+    @media (min-width: 2000px) {
+      font-size: 1rem;
     }
   }
 

@@ -15,5 +15,9 @@
   &:hover {
     color: darken($white, 35%);
   }
+
+  @media (min-width: 2000px) {
+    font-size: $wide-desktop-logo-font-size;
+  }
 }
 </style>

@@ -94,6 +94,11 @@ export default {
       width: $desktop-clock-face;
       height: $desktop-clock-face;
     }
+
+    @media (min-width: 2000px) {
+      width: $wide-desktop-clock-face;
+      height: $wide-desktop-clock-face;
+    }
   }
 
   &__border {
@@ -122,6 +127,11 @@ export default {
     @media (min-width: 1200px) {
       width: $desktop-clock-border;
       height: $desktop-clock-border;
+    }
+
+    @media (min-width: 2000px) {
+      width: $wide-desktop-clock-border;
+      height: $wide-desktop-clock-border;
     }
   }
 

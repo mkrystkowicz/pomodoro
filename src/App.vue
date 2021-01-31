@@ -61,12 +61,17 @@ export default {
 
   &__item {
     color: lighten($base-color, 15%);
+    font-size: 1rem;
     padding: 1rem;
     transition: all 0.2s ease-out;
     cursor: pointer;
 
     &:hover {
       color: lighten($base-color, 5%);
+    }
+
+    @media (min-width: 2000px) {
+      font-size: 1.3rem;
     }
   }
 }

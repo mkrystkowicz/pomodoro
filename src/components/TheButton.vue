@@ -27,6 +27,11 @@ export default {
   border-radius: $base-border-radius;
   transition: all 0.2s ease-out;
   cursor: pointer;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
 }
 
 .counter {
