@@ -29,7 +29,11 @@ export default createStore({
         counter => counter.counterType === counterType
       );
 
-      return counter.totalTime;
+      if (counter.totalTime === 0) {
+        return 0;
+      } else {
+        return counter.totalTime;
+      }
     },
     getCounterTimeLeft: state => counterType => {
       const counter = state.counters.find(

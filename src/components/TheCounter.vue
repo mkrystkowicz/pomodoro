@@ -42,8 +42,8 @@ export default {
     }
   },
   computed: {
-    convertedTime(ms) {
-      const timeInMs = this.time || ms;
+    convertedTime() {
+      const timeInMs = this.time;
       const minutes = Math.floor(timeInMs / 60000);
       const seconds = ((timeInMs % 60000) / 1000).toFixed(0);
 
