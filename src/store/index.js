@@ -17,8 +17,8 @@ export default createStore({
       },
       {
         counterType: "long-break",
-        totalTime: 10000,
-        timeLeft: 10000,
+        totalTime: 70000,
+        timeLeft: 70000,
         isRunning: false
       }
     ]
