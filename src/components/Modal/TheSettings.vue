@@ -13,6 +13,7 @@
             class="input-container__input"
             type="number"
             name="pomodoro"
+            :placeholder="pomodoroTime"
             v-model="newPomodoroTime"
           />
         </div>
@@ -24,6 +25,7 @@
             class="input-container__input"
             type="number"
             name="short-break"
+            :placeholder="shortBreakTime"
             v-model="newShortBreakTime"
           />
         </div>
@@ -35,6 +37,7 @@
             class="input-container__input"
             type="number"
             name="long-break"
+            :placeholder="longBreakTime"
             v-model="newLongBreakTime"
           />
         </div>
@@ -65,9 +68,9 @@ export default {
   emits: ["closeModal"],
   data() {
     return {
-      newPomodoroTime: 0,
-      newShortBreakTime: 0,
-      newLongBreakTime: 0
+      newPomodoroTime: null,
+      newShortBreakTime: null,
+      newLongBreakTime: null
     };
   },
   methods: {
@@ -79,7 +82,6 @@ export default {
       };
 
       const validateSettings = this.validateSettings(newSettings);
-      console.log(validateSettings);
 
       if (!validateSettings) {
         return;
@@ -102,11 +104,14 @@ export default {
       return this.$emit("closeModal");
     },
     validateSettings({ newPomodoroTime, newShortBreakTime, newLongBreakTime }) {
+      const pomodoroNumber = parseInt(newPomodoroTime);
+      const shortBreakNumber = parseInt(newShortBreakTime);
+      const longBreakNumber = parseInt(newLongBreakTime);
+
       const smallerThanOne =
-        newPomodoroTime < 1 || newShortBreakTime < 1 || newLongBreakTime < 1;
+        pomodoroNumber < 1 || shortBreakNumber < 1 || longBreakNumber < 1;
       const shortBreakGreaterThanPomodoroAndLongBreak =
-        newShortBreakTime > newPomodoroTime ||
-        newShortBreakTime > newLongBreakTime;
+        shortBreakNumber > pomodoroNumber || shortBreakNumber > longBreakNumber;
 
       if (smallerThanOne) {
         return false;
@@ -115,6 +120,23 @@ export default {
       } else {
         return true;
       }
+    }
+  },
+  computed: {
+    pomodoroTime() {
+      const ms = this.$store.getters.getCounterTotalTime("pomodoro-counter");
+      const msToMins = ms / 60000;
+      return msToMins;
+    },
+    shortBreakTime() {
+      const ms = this.$store.getters.getCounterTotalTime("short-break");
+      const msToMins = ms / 60000;
+      return msToMins;
+    },
+    longBreakTime() {
+      const ms = this.$store.getters.getCounterTotalTime("long-break");
+      const msToMins = ms / 60000;
+      return msToMins;
     }
   }
 };
