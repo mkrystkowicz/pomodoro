@@ -1,5 +1,5 @@
 <template>
-  <the-modal @closeModal="$emit('closeModal')" class="settings">
+  <the-modal @closeModal="closeModal" class="settings">
     <template #title>
       <h2 class="settings__title">settings</h2>
     </template>
@@ -45,7 +45,7 @@
         <the-button look="primary" @click="setPomodoroSettings"
           >save</the-button
         >
-        <the-button look="flat" @click="$emit('closeModal')">
+        <the-button look="flat" @click="closeModal">
           cancel
         </the-button>
       </div>
@@ -84,10 +84,15 @@ export default {
         newSettings[setting] = timeInMs;
       }
 
+      this.closeModal();
+
       return this.$store.commit("setNewSettings", newSettings);
     },
     getMiliseconds(val) {
-      return val * 1000;
+      return val * 60000;
+    },
+    closeModal() {
+      return this.$emit("closeModal");
     }
   }
 };
