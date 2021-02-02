@@ -35,7 +35,9 @@
     </template>
     <template #footer>
       <div class="settings__buttons">
-        <the-button class="" look="primary">save</the-button>
+        <the-button look="primary" @click="setPomodoroSettings"
+          >save</the-button
+        >
         <the-button look="flat" @click="$emit('closeModal')">
           cancel
         </the-button>
@@ -53,7 +55,25 @@ export default {
     TheModal,
     TheButton
   },
-  emits: ["closeModal"]
+  emits: ["closeModal"],
+  data() {
+    return {
+      newPomodoroTime: 0,
+      newShortBreakTime: 0,
+      newLongBreakTime: 0
+    };
+  },
+  methods: {
+    setPomodoroSettings() {
+      const newSettings = {
+        newPomodoroTime: this.newPomodoroTime,
+        newShortBreakTime: this.newShortBreakTime,
+        newLongBreakTime: this.newLongBreakTime
+      };
+
+      return this.$store.commit("setSessions", newSettings);
+    }
+  }
 };
 </script>
 
