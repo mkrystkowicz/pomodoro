@@ -5,20 +5,20 @@ export default createStore({
     counters: [
       {
         counterType: "pomodoro-counter",
-        totalTime: 60000,
-        timeLeft: 60000,
+        totalTime: 1500000,
+        timeLeft: 1500000,
         isRunning: false
       },
       {
         counterType: "short-break",
-        totalTime: 10000,
-        timeLeft: 10000,
+        totalTime: 300000,
+        timeLeft: 300000,
         isRunning: false
       },
       {
         counterType: "long-break",
-        totalTime: 70000,
-        timeLeft: 70000,
+        totalTime: 1800000,
+        timeLeft: 1800000,
         isRunning: false
       }
     ]
