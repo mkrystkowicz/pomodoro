@@ -66,7 +66,7 @@ export default createStore({
       counter.timeLeft = counter.totalTime;
       counter.isRunning = false;
     },
-    setSessions(
+    setNewSettings(
       state,
       { newPomodoroTime, newShortBreakTime, newLongBreakTime }
     ) {
