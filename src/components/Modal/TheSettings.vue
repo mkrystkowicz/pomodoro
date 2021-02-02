@@ -78,21 +78,43 @@ export default {
         newLongBreakTime: this.newLongBreakTime
       };
 
-      for (const setting in newSettings) {
-        const timeInMs = this.getMiliseconds(newSettings[setting]);
+      const validateSettings = this.validateSettings(newSettings);
+      console.log(validateSettings);
 
-        newSettings[setting] = timeInMs;
+      if (!validateSettings) {
+        return;
+      } else {
+        for (const setting in newSettings) {
+          const timeInMs = this.getMiliseconds(newSettings[setting]);
+
+          newSettings[setting] = timeInMs;
+        }
+
+        this.closeModal();
+
+        return this.$store.commit("setNewSettings", newSettings);
       }
-
-      this.closeModal();
-
-      return this.$store.commit("setNewSettings", newSettings);
     },
     getMiliseconds(val) {
       return val * 60000;
     },
     closeModal() {
       return this.$emit("closeModal");
+    },
+    validateSettings({ newPomodoroTime, newShortBreakTime, newLongBreakTime }) {
+      const smallerThanOne =
+        newPomodoroTime < 1 || newShortBreakTime < 1 || newLongBreakTime < 1;
+      const shortBreakGreaterThanPomodoroAndLongBreak =
+        newShortBreakTime > newPomodoroTime ||
+        newShortBreakTime > newLongBreakTime;
+
+      if (smallerThanOne) {
+        return false;
+      } else if (shortBreakGreaterThanPomodoroAndLongBreak) {
+        return false;
+      } else {
+        return true;
+      }
     }
   }
 };
