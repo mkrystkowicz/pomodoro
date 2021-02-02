@@ -9,7 +9,12 @@
           <label class="input-container__label" for="pomodoro"
             >Pomodoro time</label
           >
-          <input class="input-container__input" type="number" name="pomodoro" />
+          <input
+            class="input-container__input"
+            type="number"
+            name="pomodoro"
+            v-model="newPomodoroTime"
+          />
         </div>
         <div class="input-container">
           <label class="input-container__label" for="short-break"
@@ -19,6 +24,7 @@
             class="input-container__input"
             type="number"
             name="short-break"
+            v-model="newShortBreakTime"
           />
         </div>
         <div class="input-container">
@@ -29,6 +35,7 @@
             class="input-container__input"
             type="number"
             name="long-break"
+            v-model="newLongBreakTime"
           />
         </div>
       </div>
@@ -71,7 +78,16 @@ export default {
         newLongBreakTime: this.newLongBreakTime
       };
 
+      for (const setting in newSettings) {
+        const timeInMs = this.getMiliseconds(newSettings[setting]);
+
+        newSettings[setting] = timeInMs;
+      }
+
       return this.$store.commit("setSessions", newSettings);
+    },
+    getMiliseconds(val) {
+      return val * 1000;
     }
   }
 };
