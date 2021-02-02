@@ -50,6 +50,8 @@ export default {
   color: $base-color;
   border-radius: $modal-border-radius;
   animation: 0.4s modalAnimation ease-in-out;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   &__title {
     width: 100%;

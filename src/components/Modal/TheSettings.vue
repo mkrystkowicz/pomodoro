@@ -84,7 +84,7 @@ export default {
         newSettings[setting] = timeInMs;
       }
 
-      return this.$store.commit("setSessions", newSettings);
+      return this.$store.commit("setNewSettings", newSettings);
     },
     getMiliseconds(val) {
       return val * 1000;

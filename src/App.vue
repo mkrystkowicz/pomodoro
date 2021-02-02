@@ -4,7 +4,12 @@
     <div class="view-container">
       <router-view></router-view>
       <ul class="modal-nav">
-        <li class="modal-nav__item unselectable">info</li>
+        <li
+          class="modal-nav__item unselectable"
+          @click="infoOpened = !infoOpened"
+        >
+          info
+        </li>
         <li
           class="modal-nav__item unselectable"
           @click="settingsOpened = !settingsOpened"
@@ -18,20 +23,28 @@
       v-if="settingsOpened"
       @closeModal="settingsOpened = !settingsOpened"
     ></the-settings>
+    <the-info
+      v-if="infoOpened"
+      @closeModal="infoOpened = !infoOpened"
+    ></the-info>
   </div>
 </template>
 
 <script>
 import TheHeader from "@/components/Header/TheHeader.vue";
 import TheSettings from "./components/Modal/TheSettings.vue";
+import TheInfo from "./components/Modal/TheInfo.vue";
+
 export default {
   components: {
     TheHeader,
-    TheSettings
+    TheSettings,
+    TheInfo
   },
   data() {
     return {
-      settingsOpened: false
+      settingsOpened: false,
+      infoOpened: false
     };
   }
 };
