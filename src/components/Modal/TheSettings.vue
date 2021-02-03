@@ -213,5 +213,6 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   padding: $modal-padding;
+  background-color: $white;
 }
 </style>
