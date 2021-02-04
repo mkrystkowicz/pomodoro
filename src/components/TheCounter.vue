@@ -45,9 +45,13 @@ export default {
     convertedTime() {
       const timeInMs = this.time;
       const minutes = Math.floor(timeInMs / 60000);
-      const seconds = ((timeInMs % 60000) / 1000).toFixed(0);
+      let seconds = ((timeInMs % 60000) / 1000).toFixed(0);
 
-      return minutes + "'" + (seconds < 10 ? "0" : "") + seconds;
+      if (seconds == 60) {
+        return minutes + 1 + "'" + "00";
+      } else {
+        return minutes + "'" + (seconds < 10 ? "0" : "") + seconds;
+      }
     },
     indicateState() {
       if (!this.counterState) return "play";
