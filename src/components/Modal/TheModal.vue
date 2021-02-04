@@ -50,8 +50,9 @@ export default {
   color: $base-color;
   border-radius: $modal-border-radius;
   animation: 0.4s modalAnimation ease-in-out;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__title {
     width: 100%;
@@ -61,6 +62,36 @@ export default {
 
   &__content {
     margin-top: 1rem;
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 85%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-bottom: 3rem;
+  }
+
+  &__footer {
+    margin-top: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $white;
+    padding: $modal-padding;
+    border-radius: 0 0 $base-border-radius $base-border-radius;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 90%;
+      height: 8px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      box-shadow: 0 0 10px 3px $white;
+      transform: translateX(-50%);
+    }
   }
 
   @media (min-width: 450px) {

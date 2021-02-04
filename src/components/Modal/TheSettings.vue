@@ -174,10 +174,12 @@ export default {
     font-weight: bold;
     color: $base-color;
     transform: rotate(45deg) translate(50%, -50%);
+    margin-right: $modal-padding;
   }
 
   &__label {
     font-size: $settings-input-label-font-size;
+    margin-left: $modal-padding;
   }
 
   &__input {
@@ -191,6 +193,7 @@ export default {
     font-family: $base-font-family;
     letter-spacing: 0.2rem;
     transition: 0.2s ease-in-out;
+    margin-right: $modal-padding;
 
     &:hover {
       background-color: lighten($base-color, 10%);
@@ -206,13 +209,8 @@ export default {
 
 .settings__buttons {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: $modal-padding;
-  background-color: $white;
 }
 </style>

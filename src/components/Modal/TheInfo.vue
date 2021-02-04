@@ -72,15 +72,15 @@ export default {
 @import "@/scss/_base.scss";
 
 .info {
-  position: relative;
+  // position: relative;
 
   &__content {
     font-family: $base-font-family;
     padding: $modal-padding;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
   }
 
   &__subtitle {
