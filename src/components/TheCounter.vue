@@ -47,7 +47,7 @@ export default {
       const minutes = Math.floor(timeInMs / 60000);
       let seconds = ((timeInMs % 60000) / 1000).toFixed(0);
 
-      if (seconds == 60) {
+      if (parseInt(seconds) === 60) {
         return minutes + 1 + "'" + "00";
       } else {
         return minutes + "'" + (seconds < 10 ? "0" : "") + seconds;

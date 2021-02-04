@@ -71,6 +71,7 @@ export default {
 .modal-nav {
   display: flex;
   list-style: none;
+  animation: modal-nav-animation $navs-animation-duration ease-out;
 
   &__item {
     color: lighten($base-color, 15%);
@@ -86,6 +87,17 @@ export default {
     @media (min-width: 2000px) {
       font-size: 1.3rem;
     }
+  }
+}
+
+@keyframes modal-nav-animation {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
