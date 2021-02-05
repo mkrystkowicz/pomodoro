@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-    <TheHeader />
+    <TheHeader @click="setAnim" />
     <div class="view-container">
-      <router-view></router-view>
+      <router-view v-slot="{ Component }">
+        <transition :name="animationDirection" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
       <ul class="modal-nav">
         <li
           class="modal-nav__item unselectable"
@@ -44,8 +48,31 @@ export default {
   data() {
     return {
       settingsOpened: false,
-      infoOpened: false
+      infoOpened: false,
+      animationDirection: "fade"
     };
+  },
+  methods: {
+    setAnim() {
+      const routes = this.$router.options.routes;
+      this.$router.beforeEach((to, from, next) => {
+        const toElement = routes.find(el => el.path === to.path);
+        const fromElement = routes.find(el => el.path === from.path);
+        const toIndex = routes.indexOf(toElement);
+        const fromIndex = routes.indexOf(fromElement);
+
+        if (toIndex > fromIndex) {
+          this.changeDirection("to-left");
+        } else if (toIndex < fromIndex) {
+          this.changeDirection("to-right");
+        }
+
+        next();
+      });
+    },
+    changeDirection(direction) {
+      this.animationDirection = direction;
+    }
   }
 };
 </script>
@@ -99,5 +126,32 @@ export default {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.to-left-enter-from,
+.to-right-leave-to {
+  opacity: 0;
+  transform: translateX(120px) scale(0.95);
+}
+
+.to-left-enter-to,
+.to-left-leave-from,
+.to-right-leave-from,
+.to-right-enter-to {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.to-left-leave-to,
+.to-right-enter-from {
+  opacity: 0;
+  transform: translateX(-120px) scale(0.95);
+}
+
+.to-right-enter-active,
+.to-right-leave-active,
+.to-left-enter-active,
+.to-left-leave-active {
+  transition: all 0.4s ease-out;
 }
 </style>
