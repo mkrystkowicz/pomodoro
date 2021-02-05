@@ -2,11 +2,13 @@
   <div class="container">
     <TheHeader @click="setAnim" />
     <div class="view-container">
-      <router-view v-slot="{ Component }">
-        <transition :name="animationDirection" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <div class="counter-container">
+        <router-view v-slot="{ Component }">
+          <transition :name="animationDirection" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
+      </div>
       <ul class="modal-nav">
         <li
           class="modal-nav__item unselectable"
@@ -49,7 +51,7 @@ export default {
     return {
       settingsOpened: false,
       infoOpened: false,
-      animationDirection: "fade"
+      animationDirection: "to-left"
     };
   },
   methods: {
@@ -66,7 +68,6 @@ export default {
         } else if (toIndex < fromIndex) {
           this.changeDirection("to-right");
         }
-
         next();
       });
     },
@@ -95,6 +96,11 @@ export default {
   justify-content: space-evenly;
 }
 
+.counter-container {
+  opacity: 0;
+  animation: $counter-entrance-animation;
+}
+
 .modal-nav {
   display: flex;
   list-style: none;
@@ -114,6 +120,15 @@ export default {
     @media (min-width: 2000px) {
       font-size: 1.3rem;
     }
+  }
+}
+
+@keyframes counter-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
