@@ -353,6 +353,7 @@ export default {
 
   &__inputs-list {
     display: flex;
+    height: 3rem;
     width: 60%;
     margin-top: 1rem;
     flex-direction: row;
@@ -365,14 +366,13 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 2rem;
-    height: 2rem;
+    height: 100%;
   }
 
   &__input-label {
     font-size: 0.8rem;
-    margin-top: 0.8rem;
   }
 
   &__input {
@@ -382,8 +382,8 @@ export default {
     &::after {
       content: "";
       display: block;
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 1.5rem;
+      height: 1.5rem;
       border-radius: 50rem;
       position: absolute;
       top: 50%;
