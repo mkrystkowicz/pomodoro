@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <TheHeader @click="setAnim" />
+    <TheHeader @click="setAnimation" />
     <div class="view-container">
       <div class="counter-container">
         <router-view v-slot="{ Component }">
@@ -55,7 +55,7 @@ export default {
     };
   },
   methods: {
-    setAnim() {
+    setAnimation() {
       const routes = this.$router.options.routes;
       this.$router.beforeEach((to, from, next) => {
         const toElement = routes.find(el => el.path === to.path);
@@ -64,14 +64,14 @@ export default {
         const fromIndex = routes.indexOf(fromElement);
 
         if (toIndex > fromIndex) {
-          this.changeDirection("to-left");
+          this.changeAnimationDirection("to-left");
         } else if (toIndex < fromIndex) {
-          this.changeDirection("to-right");
+          this.changeAnimationDirection("to-right");
         }
         next();
       });
     },
-    changeDirection(direction) {
+    changeAnimationDirection(direction) {
       this.animationDirection = direction;
     }
   }
@@ -85,7 +85,7 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: $base-color;
-  font-family: $base-font-family;
+  font-family: var(--active-font-family);
 }
 
 .view-container {

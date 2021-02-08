@@ -106,7 +106,7 @@ export default {
   }
 
   &__border {
-    border: 0.5rem solid $sec-color;
+    border: 0.5rem solid var(--active-theme-color);
     position: absolute;
     width: $mobile-clock-border;
     height: $mobile-clock-border;

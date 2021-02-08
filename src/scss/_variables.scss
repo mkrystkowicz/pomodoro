@@ -1,15 +1,25 @@
+//default colors
 $base-color: #232323;
+$black: #000;
 $white: #fff;
-$sec-color: #53b835;
-$th-color: #202020;
+
+//theme colors
+$orange-color: #e0bc44;
+$green-color: #53b835;
+$red-color: #df3131;
 
 $base-box-shadow: 0 8px 6px -6px black;
-$hover-box-shadow: 0 8px 6px -8px darken($sec-color, 20%);
+$hover-box-shadow: 0 8px 6px -8px var(--active-theme-color);
 
 $base-border-radius: 3rem;
 
+$roboto-font-family: "Roboto", sans-serif;
 $base-font-family: "Poppins", sans-serif;
+$ubuntu-font-family: "Ubuntu", sans-serif;
+
+$large-font-size: 18px;
 $base-font-size: 16px;
+$small-font-size: 14px;
 
 $logo-font-size: 2rem;
 $wide-desktop-logo-font-size: 4rem;
@@ -31,3 +41,11 @@ $settings-input-width: 4rem;
 
 $navs-animation-duration: 0.8s;
 $counter-entrance-animation: counter-animation 0.6s 0.8s ease-out forwards;
+
+:root {
+  --active-font-family: "Poppins", sans-serif;
+  --active-font-size: 18px;
+  --active-theme-color: #df3131;
+
+  font-size: var(--active-font-size);
+}

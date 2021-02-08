@@ -72,8 +72,12 @@ export default {
 @import "@/scss/_base.scss";
 
 .info {
+  &__title {
+    font-weight: lighter;
+  }
+
   &__content {
-    font-family: $base-font-family;
+    font-family: var(--active-font-family);
     padding: $modal-padding;
   }
 
@@ -81,6 +85,7 @@ export default {
     font-size: 1.2rem;
     text-align: center;
     margin: 0.8rem 0;
+    font-weight: 300;
   }
 
   &__about,

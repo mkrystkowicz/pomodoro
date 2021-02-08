@@ -20,3 +20,39 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.font-red-theme {
+  color: $red-color;
+}
+
+.font-green-theme {
+  color: $green-color;
+}
+
+.font-orange-theme {
+  color: $orange-color;
+}
+
+.font-family-ubuntu {
+  font-family: $ubuntu-font-family;
+}
+
+.font-family-poppins {
+  font-family: $base-font-family;
+}
+
+.font-family-roboto {
+  font-family: $roboto-font-family;
+}
+
+.font-size-small {
+  font-size: $small-font-size !important;
+}
+
+.font-size-medium {
+  font-size: $base-font-size !important;
+}
+
+.font-size-large {
+  font-size: $large-font-size !important;
+}

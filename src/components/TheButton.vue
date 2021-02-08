@@ -21,7 +21,7 @@ export default {
 .btn {
   box-sizing: border-box;
   font-size: $base-font-size;
-  font-family: $base-font-family;
+  font-family: var(--active-font-family);
   padding: 5px 25px;
   border: 0.1rem solid transparent;
   border-radius: $base-border-radius;
@@ -46,24 +46,24 @@ export default {
 }
 
 .primary {
-  background-color: $sec-color;
+  background-color: var(--active-theme-color);
   color: $white;
 
   &:hover {
     background-color: $white;
-    border: 0.1rem solid $sec-color;
-    color: $sec-color;
+    border: 0.1rem solid var(--active-theme-color);
+    color: var(--active-theme-color);
     transform: scale(1.1);
   }
 }
 
 .flat {
   background-color: $white;
-  color: $sec-color;
-  border: 0.1rem solid $sec-color;
+  color: var(--active-theme-color);
+  border: 0.1rem solid var(--active-theme-color);
 
   &:hover {
-    background-color: $sec-color;
+    background-color: var(--active-theme-color);
     border: 0.1rem solid transparent;
     color: $white;
     transform: scale(1.1);

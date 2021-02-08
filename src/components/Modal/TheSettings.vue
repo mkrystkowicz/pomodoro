@@ -42,6 +42,135 @@
           />
         </div>
       </div>
+      <div class="radio-container">
+        <div class="radio-container__settings-title">
+          Theme color
+        </div>
+        <div class="radio-container__inputs-list">
+          <div class="radio-container__theme-input-container">
+            <input
+              class="radio-container__input"
+              type="radio"
+              name="theme-color"
+            />
+            <label
+              class="radio-container__input-label font-green-theme"
+              for="font-family"
+              >Green</label
+            >
+          </div>
+          <div class="radio-container__theme-input-container">
+            <input
+              class="radio-container__input"
+              type="radio"
+              name="theme-color"
+            />
+            <label
+              class="radio-container__input-label font-orange-theme"
+              for="font-family"
+              >Orange</label
+            >
+          </div>
+          <div class="radio-container__theme-input-container">
+            <input
+              class="radio-container__input"
+              type="radio"
+              name="theme-color"
+            />
+            <label
+              class="radio-container__input-label font-red-theme"
+              for="font-family"
+              >Red</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="radio-container">
+        <div class="radio-container__settings-title">
+          Font
+        </div>
+        <div class="radio-container__inputs-list">
+          <div class="radio-container__font-input-container">
+            <input
+              class="radio-container__input radio-container__input--poppins"
+              type="radio"
+              name="font-family"
+            />
+            <label
+              class="radio-container__input-label font-family-poppins"
+              for="font-family"
+              >Poppins</label
+            >
+          </div>
+          <div class="radio-container__font-input-container">
+            <input
+              class="radio-container__input radio-container__input--ubuntu"
+              type="radio"
+              name="font-family"
+            />
+            <label
+              class="radio-container__input-label font-family-ubuntu"
+              for="font-family"
+              >Ubuntu</label
+            >
+          </div>
+          <div class="radio-container__font-input-container">
+            <input
+              class="radio-container__input radio-container__input--roboto"
+              type="radio"
+              name="font-family"
+            />
+            <label
+              class="radio-container__input-label font-family-roboto"
+              for="font-family"
+              >Roboto</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="radio-container">
+        <div class="radio-container__settings-title">
+          Text size
+        </div>
+        <div class="radio-container__inputs-list">
+          <div class="radio-container__font-input-container">
+            <input
+              class="radio-container__input radio-container__input--small"
+              type="radio"
+              name="font-size"
+            />
+            <label
+              class="radio-container__input-label font-size-small"
+              for="font-size"
+              >Small</label
+            >
+          </div>
+          <div class="radio-container__font-input-container">
+            <input
+              class="radio-container__input radio-container__input--medium"
+              type="radio"
+              name="font-size"
+            />
+            <label
+              class="radio-container__input-label font-size-medium"
+              for="font-size"
+              >Medium</label
+            >
+          </div>
+          <div class="radio-container__font-input-container">
+            <input
+              class="radio-container__input radio-container__input--large"
+              type="radio"
+              name="font-size"
+            />
+            <label
+              class="radio-container__input-label font-size-large"
+              for="font-size"
+              >Large</label
+            >
+          </div>
+        </div>
+      </div>
     </template>
     <template #footer>
       <div class="settings__buttons">
@@ -147,10 +276,14 @@ export default {
 
 .settings {
   position: relative;
+
+  &__title {
+    font-weight: 300;
+  }
 }
 
 .settings__options {
-  font-family: $base-font-family;
+  font-family: var(--active-font-family);
   height: 15rem;
   display: flex;
   flex-direction: column;
@@ -171,7 +304,8 @@ export default {
     top: -40%;
     right: 0;
     font-size: 0.8rem;
-    font-weight: bold;
+    font-family: var(--active-font-family);
+    font-weight: lighter;
     color: $base-color;
     transform: rotate(45deg) translate(50%, -50%);
     margin-right: $modal-padding;
@@ -190,7 +324,7 @@ export default {
     background-color: $base-color;
     color: $white;
     text-align: right;
-    font-family: $base-font-family;
+    font-family: var(--active-font-family);
     letter-spacing: 0.2rem;
     transition: 0.2s ease-in-out;
     margin-right: $modal-padding;
@@ -203,6 +337,75 @@ export default {
     &:focus {
       transform: scaleX(1.1);
       outline: none;
+    }
+  }
+}
+
+.radio-container {
+  font-family: var(--active-font-family);
+  display: flex;
+  align-items: center;
+  margin: $modal-padding;
+
+  &__settings-title {
+    width: 40%;
+  }
+
+  &__inputs-list {
+    display: flex;
+    width: 60%;
+    margin-top: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__font-input-container,
+  &__theme-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__input-label {
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
+  }
+
+  &__input {
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: $base-color;
+    }
+
+    &:checked {
+      &::before {
+        content: "";
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: $white;
+        z-index: 1;
+      }
     }
   }
 }

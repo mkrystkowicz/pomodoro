@@ -57,7 +57,7 @@ export default {
   &__title {
     width: 100%;
     text-align: center;
-    font-family: $base-font-family;
+    font-family: var(--active-font-family);
   }
 
   &__content {

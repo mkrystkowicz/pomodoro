@@ -24,15 +24,6 @@
   box-shadow: $base-box-shadow;
   overflow: hidden;
 
-  &__indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(5%);
-    border-radius: $base-border-radius;
-    background-color: $sec-color;
-  }
-
   &__list {
     display: flex;
     flex-direction: row;
@@ -54,8 +45,8 @@
     }
 
     &.router-link-active {
-      background-color: $sec-color;
-      color: darken($sec-color, 100%);
+      background-color: var(--active-theme-color);
+      color: $black;
       border-radius: $base-border-radius;
       transition: 0.3s ease-in-out;
     }
