@@ -76,17 +76,23 @@ export default createStore({
         const counterType = counter.counterType;
 
         if (counterType === "pomodoro-counter") {
-          counter.totalTime = newPomodoroTime;
-          counter.timeLeft = newPomodoroTime;
-          counter.isRunning = false;
+          if (newPomodoroTime) {
+            counter.totalTime = newPomodoroTime;
+            counter.timeLeft = newPomodoroTime;
+            counter.isRunning = false;
+          }
         } else if (counterType === "short-break") {
-          counter.totalTime = newShortBreakTime;
-          counter.timeLeft = newShortBreakTime;
-          counter.isRunning = false;
+          if (newShortBreakTime) {
+            counter.totalTime = newShortBreakTime;
+            counter.timeLeft = newShortBreakTime;
+            counter.isRunning = false;
+          }
         } else if (counterType === "long-break") {
-          counter.totalTime = newLongBreakTime;
-          counter.timeLeft = newLongBreakTime;
-          counter.isRunning = false;
+          if (newLongBreakTime) {
+            counter.totalTime = newLongBreakTime;
+            counter.timeLeft = newLongBreakTime;
+            counter.isRunning = false;
+          }
         }
       });
     }
