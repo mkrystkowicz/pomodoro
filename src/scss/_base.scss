@@ -1,36 +1,4 @@
-$base-color: #232323;
-$white: #fff;
-$sec-color: #53b835;
-$th-color: #202020;
-
-$base-box-shadow: 0 8px 6px -6px black;
-$hover-box-shadow: 0 8px 6px -8px darken($sec-color, 20%);
-
-$base-border-radius: 3rem;
-
-$base-font-family: "Poppins", sans-serif;
-$base-font-size: 16px;
-
-$logo-font-size: 2rem;
-$wide-desktop-logo-font-size: 4rem;
-
-$mobile-clock-face: 17rem;
-$mobile-clock-border: 15rem;
-
-$desktop-clock-face: 20rem;
-$desktop-clock-border: 18rem;
-
-$wide-desktop-clock-face: 24rem;
-$wide-desktop-clock-border: 22rem;
-
-$modal-padding: 1rem;
-$modal-border-radius: 0.5rem;
-
-$settings-input-label-font-size: 1rem;
-$settings-input-width: 4rem;
-
-$navs-animation-duration: 0.8s;
-$counter-entrance-animation: counter-animation 0.6s 0.8s ease-out forwards;
+@import "@/scss/_variables.scss";
 
 * {
   margin: 0;
