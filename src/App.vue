@@ -9,6 +9,7 @@
           </transition>
         </router-view>
       </div>
+      <p>{{ visualSettings }}</p>
       <ul class="modal-nav">
         <li
           class="modal-nav__item unselectable"
@@ -73,6 +74,21 @@ export default {
     },
     changeAnimationDirection(direction) {
       this.animationDirection = direction;
+    },
+    setNewVisualSettings(settings) {
+      const { themeColor, font, fontSize } = settings;
+      const root = document.querySelector(":root");
+
+      root.style.setProperty("--active-theme-color", themeColor);
+      root.style.setProperty("--active-font-family", font);
+      root.style.setProperty("--active-font-size", fontSize + "px");
+    }
+  },
+  computed: {
+    visualSettings() {
+      const visualSettings = this.$store.getters.getVisualSettings;
+
+      return this.setNewVisualSettings(visualSettings);
     }
   }
 };

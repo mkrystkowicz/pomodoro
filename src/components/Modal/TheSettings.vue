@@ -52,6 +52,8 @@
               class="radio-container__input"
               type="radio"
               name="theme-color"
+              value="#53b835"
+              v-model="newThemeValue"
             />
             <label
               class="radio-container__input-label font-green-theme"
@@ -64,6 +66,8 @@
               class="radio-container__input"
               type="radio"
               name="theme-color"
+              value="#e0bc44"
+              v-model="newThemeValue"
             />
             <label
               class="radio-container__input-label font-orange-theme"
@@ -76,6 +80,8 @@
               class="radio-container__input"
               type="radio"
               name="theme-color"
+              value="#df3131"
+              v-model="newThemeValue"
             />
             <label
               class="radio-container__input-label font-red-theme"
@@ -95,6 +101,8 @@
               class="radio-container__input radio-container__input--poppins"
               type="radio"
               name="font-family"
+              value="Poppins"
+              v-model="newFontFamily"
             />
             <label
               class="radio-container__input-label font-family-poppins"
@@ -107,6 +115,8 @@
               class="radio-container__input radio-container__input--ubuntu"
               type="radio"
               name="font-family"
+              value="Ubuntu"
+              v-model="newFontFamily"
             />
             <label
               class="radio-container__input-label font-family-ubuntu"
@@ -119,6 +129,8 @@
               class="radio-container__input radio-container__input--roboto"
               type="radio"
               name="font-family"
+              value="Roboto"
+              v-model="newFontFamily"
             />
             <label
               class="radio-container__input-label font-family-roboto"
@@ -138,6 +150,8 @@
               class="radio-container__input radio-container__input--small"
               type="radio"
               name="font-size"
+              value="14"
+              v-model="newFontSize"
             />
             <label
               class="radio-container__input-label font-size-small"
@@ -150,6 +164,8 @@
               class="radio-container__input radio-container__input--medium"
               type="radio"
               name="font-size"
+              value="16"
+              v-model="newFontSize"
             />
             <label
               class="radio-container__input-label font-size-medium"
@@ -162,6 +178,8 @@
               class="radio-container__input radio-container__input--large"
               type="radio"
               name="font-size"
+              value="18"
+              v-model="newFontSize"
             />
             <label
               class="radio-container__input-label font-size-large"
@@ -199,7 +217,10 @@ export default {
     return {
       newPomodoroTime: null,
       newShortBreakTime: null,
-      newLongBreakTime: null
+      newLongBreakTime: null,
+      newThemeValue: null,
+      newFontFamily: null,
+      newFontSize: null
     };
   },
   methods: {
@@ -207,7 +228,12 @@ export default {
       const newSettings = {
         newPomodoroTime: this.newPomodoroTime,
         newShortBreakTime: this.newShortBreakTime,
-        newLongBreakTime: this.newLongBreakTime
+        newLongBreakTime: this.newLongBreakTime,
+        newVisualSettings: {
+          themeColor: this.newThemeValue,
+          font: this.newFontFamily,
+          fontSize: this.newFontSize
+        }
       };
 
       const validateSettings = this.validateSettings(newSettings);
@@ -218,7 +244,9 @@ export default {
         for (const setting in newSettings) {
           const timeInMs = this.getMiliseconds(newSettings[setting]);
 
-          newSettings[setting] = timeInMs;
+          if (typeof newSettings[setting] !== "object") {
+            newSettings[setting] = timeInMs;
+          }
         }
 
         this.closeModal();

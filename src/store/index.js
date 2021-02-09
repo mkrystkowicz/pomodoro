@@ -2,6 +2,11 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    visualSettings: {
+      themeColor: "#e0bc44",
+      font: "Poppins",
+      fontSize: "16"
+    },
     counters: [
       {
         counterType: "pomodoro-counter",
@@ -48,6 +53,9 @@ export default createStore({
       );
 
       return counter.isRunning;
+    },
+    getVisualSettings: state => {
+      return state.visualSettings;
     }
   },
   mutations: {
@@ -68,7 +76,12 @@ export default createStore({
     },
     setNewSettings(
       state,
-      { newPomodoroTime, newShortBreakTime, newLongBreakTime }
+      {
+        newPomodoroTime,
+        newShortBreakTime,
+        newLongBreakTime,
+        newVisualSettings
+      }
     ) {
       const counters = state.counters;
 
@@ -95,6 +108,8 @@ export default createStore({
           }
         }
       });
+
+      state.visualSettings = newVisualSettings;
     }
   },
   actions: {
