@@ -445,7 +445,7 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: var(--active-theme-color);
+        background: darken($white, 55%);
         z-index: 1;
       }
     }
