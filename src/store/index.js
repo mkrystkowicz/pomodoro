@@ -84,6 +84,7 @@ export default createStore({
       }
     ) {
       const counters = state.counters;
+      const currentVisualSettings = state.visualSettings;
 
       counters.forEach(counter => {
         const counterType = counter.counterType;
@@ -109,7 +110,11 @@ export default createStore({
         }
       });
 
-      state.visualSettings = newVisualSettings;
+      for (let setting in currentVisualSettings) {
+        if (currentVisualSettings[setting] !== newVisualSettings[setting]) {
+          currentVisualSettings[setting] = newVisualSettings[setting];
+        }
+      }
     }
   },
   actions: {

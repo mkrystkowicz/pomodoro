@@ -277,6 +277,15 @@ export default {
       } else {
         return true;
       }
+    },
+    setCurrentSettingsIndicators(settings) {
+      console.log(settings);
+
+      const { themeColor, font, fontSize } = settings;
+
+      (this.newThemeValue = themeColor),
+        (this.newFontFamily = font),
+        (this.newFontSize = fontSize);
     }
   },
   computed: {
@@ -295,6 +304,11 @@ export default {
       const msToMins = ms / 60000;
       return msToMins;
     }
+  },
+  mounted() {
+    const currentSettings = this.$store.getters.getVisualSettings;
+
+    this.setCurrentSettingsIndicators(currentSettings);
   }
 };
 </script>
