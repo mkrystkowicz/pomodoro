@@ -17,7 +17,7 @@
 <style lang="scss" scoped>
 @import "@/scss/_base.scss";
 .nav {
-  width: 90%;
+  width: 16rem;
   padding: 0.2rem;
   background-color: darken($base-color, 3%);
   border-radius: $base-border-radius;
@@ -56,20 +56,8 @@
     }
   }
 
-  @media (min-width: 420px) {
-    width: 65%;
-  }
-
-  @media (min-width: 720px) {
-    width: 45%;
-  }
-
-  @media (min-width: 1200px) {
-    width: 30%;
-  }
-
-  @media (min-width: 1500px) {
-    width: 20%;
+  @media (min-width: 375px) {
+    width: 20rem;
   }
 }
 </style>
