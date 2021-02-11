@@ -80,6 +80,7 @@ export default {
     background-color: $white;
     padding: $modal-padding;
     border-radius: 0 0 $base-border-radius $base-border-radius;
+    z-index: 1;
 
     &::before {
       content: "";
