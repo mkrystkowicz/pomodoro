@@ -116,14 +116,22 @@ export default createStore({
         }
       }
 
-      const settingsBeingSaved = {
-        newPomodoroTime,
-        newShortBreakTime,
-        newLongBreakTime,
-        newVisualSettings
-      };
+      const pomodoroCounter = counters.find(
+        obj => obj.counterType === "pomodoro-counter"
+      );
+      const shortBreakCounter = counters.find(
+        obj => obj.counterType === "short-break"
+      );
+      const longBreakCounter = counters.find(
+        obj => obj.counterType === "long-break"
+      );
 
-      console.log(settingsBeingSaved);
+      const settingsBeingSaved = {
+        newPomodoroTime: pomodoroCounter.totalTime,
+        newShortBreakTime: shortBreakCounter.totalTime,
+        newLongBreakTime: longBreakCounter.totalTime,
+        newVisualSettings: currentVisualSettings
+      };
 
       window.localStorage.setItem(
         "pomodoroSettings",
