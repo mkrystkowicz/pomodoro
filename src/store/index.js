@@ -115,6 +115,20 @@ export default createStore({
           currentVisualSettings[setting] = newVisualSettings[setting];
         }
       }
+
+      const settingsBeingSaved = {
+        newPomodoroTime,
+        newShortBreakTime,
+        newLongBreakTime,
+        newVisualSettings
+      };
+
+      console.log(settingsBeingSaved);
+
+      window.localStorage.setItem(
+        "pomodoroSettings",
+        JSON.stringify(settingsBeingSaved)
+      );
     }
   },
   actions: {

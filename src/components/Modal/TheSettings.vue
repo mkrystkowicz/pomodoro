@@ -279,13 +279,11 @@ export default {
       }
     },
     setCurrentSettingsIndicators(settings) {
-      console.log(settings);
-
       const { themeColor, font, fontSize } = settings;
 
-      (this.newThemeValue = themeColor),
-        (this.newFontFamily = font),
-        (this.newFontSize = fontSize);
+      this.newThemeValue = themeColor;
+      this.newFontFamily = font;
+      this.newFontSize = fontSize;
     }
   },
   computed: {

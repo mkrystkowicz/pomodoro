@@ -86,7 +86,15 @@ export default {
   },
   computed: {
     visualSettings() {
-      const visualSettings = this.$store.getters.getVisualSettings;
+      const localStorage = window.localStorage.getItem("pomodoroSettings");
+      let visualSettings;
+
+      if (localStorage) {
+        this.$store.commit("setNewSettings", JSON.parse(localStorage));
+        visualSettings = this.$store.getters.getVisualSettings;
+      } else {
+        visualSettings = this.$store.getters.getVisualSettings;
+      }
 
       return this.setNewVisualSettings(visualSettings);
     }
