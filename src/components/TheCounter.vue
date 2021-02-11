@@ -39,6 +39,19 @@ export default {
       const timeLeft = this.time;
 
       return totalTime - timeLeft;
+    },
+    playAudio() {
+      const audio = new Audio(
+        "http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3"
+      );
+      audio.play();
+    }
+  },
+  watch: {
+    time() {
+      if (this.time === 0) {
+        this.playAudio();
+      }
     }
   },
   computed: {
