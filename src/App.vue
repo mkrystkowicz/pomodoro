@@ -23,7 +23,7 @@
         >
           settings
         </li>
-        <li class="modal-nav__item unselectable">history</li>
+        <!-- <li class="modal-nav__item unselectable">history</li> -->
       </ul>
     </div>
     <the-settings

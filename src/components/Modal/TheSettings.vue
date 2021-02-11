@@ -5,12 +5,16 @@
     </template>
     <template #default>
       <div class="settings__options">
+        <p class="settings__saveFailed" v-if="savingSettingsFailed">
+          Please enter correct value.
+        </p>
         <div class="input-container">
           <label class="input-container__label" for="pomodoro"
             >Pomodoro time</label
           >
           <input
             class="input-container__input"
+            :class="pomodoroInputFailed ? 'failed' : ''"
             type="number"
             name="pomodoro"
             :placeholder="pomodoroTime"
@@ -23,6 +27,7 @@
           >
           <input
             class="input-container__input"
+            :class="shortBreakInputFailed ? 'failed' : ''"
             type="number"
             name="short-break"
             :placeholder="shortBreakTime"
@@ -35,6 +40,7 @@
           >
           <input
             class="input-container__input"
+            :class="longBreakInputFailed ? 'failed' : ''"
             type="number"
             name="long-break"
             :placeholder="longBreakTime"
@@ -215,6 +221,10 @@ export default {
   emits: ["closeModal"],
   data() {
     return {
+      savingSettingsFailed: false,
+      pomodoroInputFailed: false,
+      shortBreakInputFailed: false,
+      longBreakInputFailed: false,
       newPomodoroTime: null,
       newShortBreakTime: null,
       newLongBreakTime: null,
@@ -239,7 +249,7 @@ export default {
       const validateSettings = this.validateSettings(newSettings);
 
       if (!validateSettings) {
-        return;
+        return (this.savingSettingsFailed = true);
       } else {
         for (const setting in newSettings) {
           const timeInMs = this.getMiliseconds(newSettings[setting]);
@@ -265,14 +275,50 @@ export default {
       const shortBreakNumber = parseInt(newShortBreakTime);
       const longBreakNumber = parseInt(newLongBreakTime);
 
+      const storagePomodoroTime = this.$store.getters.getCounterTotalTime(
+        "pomodoro-counter"
+      );
+      const storageShortBreakTime = this.$store.getters.getCounterTotalTime(
+        "short-break"
+      );
+      const storageLongBreakTime = this.$store.getters.getCounterTotalTime(
+        "long-break"
+      );
+
       const smallerThanOne =
         pomodoroNumber < 1 || shortBreakNumber < 1 || longBreakNumber < 1;
-      const shortBreakGreaterThanPomodoroAndLongBreak =
-        shortBreakNumber > pomodoroNumber || shortBreakNumber > longBreakNumber;
+      const pomodoroOrLongBreakTimeSmallerThanShortBreak =
+        this.getMiliseconds(pomodoroNumber) <= storageShortBreakTime ||
+        this.getMiliseconds(longBreakNumber) <= storageShortBreakTime;
+      const shortBreakGreaterThanOrEqualPomodoroAndLongBreak =
+        this.getMiliseconds(shortBreakNumber) === storageShortBreakTime ||
+        this.getMiliseconds(shortBreakNumber) >= storagePomodoroTime ||
+        this.getMiliseconds(shortBreakNumber) >= storageLongBreakTime;
 
       if (smallerThanOne) {
+        if (pomodoroNumber < 1) {
+          this.pomodoroInputFailed = true;
+        }
+        if (shortBreakNumber < 1) {
+          this.shortBreakInputFailed = true;
+        }
+        if (longBreakNumber < 1) {
+          this.longBreakInputFailed = true;
+        }
+
         return false;
-      } else if (shortBreakGreaterThanPomodoroAndLongBreak) {
+      } else if (pomodoroOrLongBreakTimeSmallerThanShortBreak) {
+        if (this.getMiliseconds(pomodoroNumber) <= storageShortBreakTime) {
+          this.pomodoroInputFailed = true;
+        }
+        if (this.getMiliseconds(longBreakNumber) <= storageShortBreakTime) {
+          this.longBreakInputFailed = true;
+        }
+
+        return false;
+      } else if (shortBreakGreaterThanOrEqualPomodoroAndLongBreak) {
+        this.shortBreakInputFailed = true;
+
         return false;
       } else {
         return true;
@@ -319,6 +365,13 @@ export default {
 
   &__title {
     font-weight: 300;
+  }
+
+  &__saveFailed {
+    color: $red-color;
+    text-align: center;
+    font-size: 0.8rem;
+    transition: 0.3s ease-out;
   }
 }
 
@@ -377,6 +430,10 @@ export default {
     &:focus {
       transform: scaleX(1.1);
       outline: none;
+    }
+
+    &.failed {
+      box-shadow: $modal-input-failed;
     }
   }
 }
