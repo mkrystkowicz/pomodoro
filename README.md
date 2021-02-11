@@ -6,6 +6,9 @@
 Pomodoro app counts your time during activities, it helps you with time tracking during pomodoris.
 ```
 
+### TODO:
+	Pomodoro-history
+
 ### Procedure
 
 ```
@@ -43,3 +46,5 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+###### This project is 100% designed and coded by me.
