@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" :class="look">
+  <button class="btn" :class="type">
     <slot></slot>
   </button>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   props: {
-    look: {
+    type: {
       type: String,
       value: ["counter", "primary", "flat"]
     }
@@ -20,7 +20,6 @@ export default {
 
 .btn {
   box-sizing: border-box;
-  font-size: $base-font-size;
   font-family: var(--active-font-family);
   padding: 5px 25px;
   border: 0.1rem solid transparent;
@@ -37,6 +36,7 @@ export default {
 .counter {
   color: $base-color;
   background-color: $white;
+  font-size: 1.2rem;
   border: none;
 
   &:hover {
@@ -46,6 +46,7 @@ export default {
 }
 
 .primary {
+  font-size: 1rem;
   background-color: var(--active-theme-color);
   color: $white;
 
@@ -58,6 +59,7 @@ export default {
 }
 
 .flat {
+  font-size: 1rem;
   background-color: $white;
   color: var(--active-theme-color);
   border: 0.1rem solid var(--active-theme-color);

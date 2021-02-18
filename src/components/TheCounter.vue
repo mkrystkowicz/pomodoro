@@ -12,9 +12,8 @@
           type="counter"
           class="counter__btn unselectable"
           id="reset-btn"
+          >Reset</the-button
         >
-          Reset
-        </the-button>
       </div>
     </div>
   </div>
