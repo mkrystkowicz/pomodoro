@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav">
+  <nav class="nav" @click="scrollToBottom">
     <ul class="nav__list">
       <router-link class="nav__link unselectable" to="/pomodoro"
         >pomodoro</router-link
@@ -13,6 +13,20 @@
     </ul>
   </nav>
 </template>
+
+<script>
+export default {
+  methods: {
+    scrollToBottom() {
+      window.scrollBy({
+        top: 50,
+        left: 0,
+        behavior: "smooth"
+      });
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 @import "@/scss/_base.scss";
