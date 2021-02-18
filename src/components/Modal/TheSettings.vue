@@ -64,7 +64,7 @@
             <label
               class="radio-container__input-label font-green-theme"
               for="font-family"
-              >Green</label
+              >Emerald</label
             >
           </div>
           <div class="radio-container__theme-input-container">
@@ -78,7 +78,7 @@
             <label
               class="radio-container__input-label font-orange-theme"
               for="font-family"
-              >Orange</label
+              >Gold</label
             >
           </div>
           <div class="radio-container__theme-input-container">
@@ -92,7 +92,7 @@
             <label
               class="radio-container__input-label font-red-theme"
               for="font-family"
-              >Red</label
+              >Crimson</label
             >
           </div>
         </div>
