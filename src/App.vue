@@ -106,8 +106,8 @@ export default {
 @import "@/scss/_base.scss";
 
 .container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: $base-color;
   font-family: var(--active-font-family);
 }

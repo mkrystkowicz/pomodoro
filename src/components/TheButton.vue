@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" :class="type">
+  <button class="btn" :class="look">
     <slot></slot>
   </button>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   props: {
-    type: {
+    look: {
       type: String,
       value: ["counter", "primary", "flat"]
     }

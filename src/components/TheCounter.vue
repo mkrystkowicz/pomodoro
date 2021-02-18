@@ -9,7 +9,7 @@
         <div class="counter__time unselectable">{{ convertedTime }}</div>
         <span class="counter__action unselectable">{{ indicateState }}</span>
         <the-button
-          type="counter"
+          look="counter"
           class="counter__btn unselectable"
           id="reset-btn"
           >Reset</the-button
