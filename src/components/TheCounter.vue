@@ -6,7 +6,9 @@
         :style="counterState ? transformBorder : ''"
       ></div>
       <div class="counter__timer">
-        <div class="counter__time unselectable">{{ convertedTime }}</div>
+        <div class="counter__time unselectable">
+          {{ convertedTime }}
+        </div>
         <span class="counter__action unselectable">{{ indicateState }}</span>
         <the-button
           look="counter"

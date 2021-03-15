@@ -8,93 +8,69 @@
         <p class="settings__saveFailed" v-if="savingSettingsFailed">
           Please enter correct value.
         </p>
-        <div class="input-container">
-          <label class="input-container__label" for="pomodoro"
-            >Pomodoro time</label
-          >
-          <input
-            class="input-container__input"
-            :class="pomodoroInputFailed ? 'failed' : ''"
-            type="number"
-            name="pomodoro"
-            :placeholder="pomodoroTime"
-            v-model="newPomodoroTime"
-          />
-        </div>
-        <div class="input-container">
-          <label class="input-container__label" for="short-break"
-            >Short-break time</label
-          >
-          <input
-            class="input-container__input"
-            :class="shortBreakInputFailed ? 'failed' : ''"
-            type="number"
-            name="short-break"
-            :placeholder="shortBreakTime"
-            v-model="newShortBreakTime"
-          />
-        </div>
-        <div class="input-container">
-          <label class="input-container__label" for="long-break"
-            >Long-break time</label
-          >
-          <input
-            class="input-container__input"
-            :class="longBreakInputFailed ? 'failed' : ''"
-            type="number"
-            name="long-break"
-            :placeholder="longBreakTime"
-            v-model="newLongBreakTime"
-          />
-        </div>
+        <the-input
+          inputType="settingsInput"
+          label="Pomodoro time"
+          :inputFailed="pomodoroInputFailed"
+          name="pomodoro"
+          :currentValue="pomodoroTime"
+          v-model:newPomodoroTime="newPomodoroTime"
+          updateType="update:newPomodoroTime"
+        />
+        <the-input
+          inputType="settingsInput"
+          label="Short-break time"
+          :inputFailed="shortBreakInputFailed"
+          name="short-break"
+          :currentValue="shortBreakTime"
+          v-model:newShortBreakTime="newShortBreakTime"
+          updateType="update:newShortBreakTime"
+        />
+        <the-input
+          inputType="settingsInput"
+          label="Long-break time"
+          :inputFailed="longBreakInputFailed"
+          name="long-break"
+          :currentValue="longBreakTime"
+          v-model:newLongBreakTime="newLongBreakTime"
+          updateType="update:newLongBreakTime"
+        />
       </div>
       <div class="radio-container">
         <div class="radio-container__settings-title">
           Theme color
         </div>
         <div class="radio-container__inputs-list">
-          <div class="radio-container__theme-input-container">
-            <input
-              class="radio-container__input"
-              type="radio"
-              name="theme-color"
-              value="#53b835"
-              v-model="newThemeValue"
-            />
-            <label
-              class="radio-container__input-label font-green-theme"
-              for="font-family"
-              >Emerald</label
-            >
-          </div>
-          <div class="radio-container__theme-input-container">
-            <input
-              class="radio-container__input"
-              type="radio"
-              name="theme-color"
-              value="#e0bc44"
-              v-model="newThemeValue"
-            />
-            <label
-              class="radio-container__input-label font-orange-theme"
-              for="font-family"
-              >Gold</label
-            >
-          </div>
-          <div class="radio-container__theme-input-container">
-            <input
-              class="radio-container__input"
-              type="radio"
-              name="theme-color"
-              value="#df3131"
-              v-model="newThemeValue"
-            />
-            <label
-              class="radio-container__input-label font-red-theme"
-              for="font-family"
-              >Crimson</label
-            >
-          </div>
+          <the-input
+            inputType="settingsCheckbox"
+            label="Emerald"
+            name="theme-color"
+            checkboxValue="#53b835"
+            v-model:newThemeValue="newThemeValue"
+            updateType="update:newThemeValue"
+            :shouldBeChecked="newThemeValue"
+            additionalClass="font-emerald-theme"
+          />
+          <the-input
+            inputType="settingsCheckbox"
+            label="Gold"
+            name="theme-color"
+            checkboxValue="#e0bc44"
+            v-model:newThemeValue="newThemeValue"
+            updateType="update:newThemeValue"
+            :shouldBeChecked="newThemeValue"
+            additionalClass="font-gold-theme"
+          />
+          <the-input
+            inputType="settingsCheckbox"
+            label="Crimson"
+            name="theme-color"
+            checkboxValue="#df3131"
+            v-model:newThemeValue="newThemeValue"
+            updateType="update:newThemeValue"
+            :shouldBeChecked="newThemeValue"
+            additionalClass="font-crimson-theme"
+          />
         </div>
       </div>
       <div class="radio-container">
@@ -102,48 +78,36 @@
           Font
         </div>
         <div class="radio-container__inputs-list">
-          <div class="radio-container__font-input-container">
-            <input
-              class="radio-container__input radio-container__input--poppins"
-              type="radio"
-              name="font-family"
-              value="Poppins"
-              v-model="newFontFamily"
-            />
-            <label
-              class="radio-container__input-label font-family-poppins"
-              for="font-family"
-              >Poppins</label
-            >
-          </div>
-          <div class="radio-container__font-input-container">
-            <input
-              class="radio-container__input radio-container__input--ubuntu"
-              type="radio"
-              name="font-family"
-              value="Ubuntu"
-              v-model="newFontFamily"
-            />
-            <label
-              class="radio-container__input-label font-family-ubuntu"
-              for="font-family"
-              >Ubuntu</label
-            >
-          </div>
-          <div class="radio-container__font-input-container">
-            <input
-              class="radio-container__input radio-container__input--roboto"
-              type="radio"
-              name="font-family"
-              value="Roboto"
-              v-model="newFontFamily"
-            />
-            <label
-              class="radio-container__input-label font-family-roboto"
-              for="font-family"
-              >Roboto</label
-            >
-          </div>
+          <the-input
+            inputType="settingsCheckbox"
+            label="Poppins"
+            name="font-family"
+            checkboxValue="Poppins"
+            v-model:newFontFamily="newFontFamily"
+            updateType="update:newFontFamily"
+            :shouldBeChecked="newFontFamily"
+            additionalClass="font-family-poppins"
+          />
+          <the-input
+            inputType="settingsCheckbox"
+            label="Ubuntu"
+            name="font-family"
+            checkboxValue="Ubuntu"
+            v-model:newFontFamily="newFontFamily"
+            updateType="update:newFontFamily"
+            :shouldBeChecked="newFontFamily"
+            additionalClass="font-family-ubuntu"
+          />
+          <the-input
+            inputType="settingsCheckbox"
+            label="Roboto"
+            name="font-family"
+            checkboxValue="Roboto"
+            v-model:newFontFamily="newFontFamily"
+            updateType="update:newFontFamily"
+            :shouldBeChecked="newFontFamily"
+            additionalClass="font-family-roboto"
+          />
         </div>
       </div>
       <div class="radio-container">
@@ -151,48 +115,36 @@
           Text size
         </div>
         <div class="radio-container__inputs-list">
-          <div class="radio-container__font-input-container">
-            <input
-              class="radio-container__input radio-container__input--small"
-              type="radio"
-              name="font-size"
-              value="14"
-              v-model="newFontSize"
-            />
-            <label
-              class="radio-container__input-label font-size-small"
-              for="font-size"
-              >Small</label
-            >
-          </div>
-          <div class="radio-container__font-input-container">
-            <input
-              class="radio-container__input radio-container__input--medium"
-              type="radio"
-              name="font-size"
-              value="16"
-              v-model="newFontSize"
-            />
-            <label
-              class="radio-container__input-label font-size-medium"
-              for="font-size"
-              >Medium</label
-            >
-          </div>
-          <div class="radio-container__font-input-container">
-            <input
-              class="radio-container__input radio-container__input--large"
-              type="radio"
-              name="font-size"
-              value="18"
-              v-model="newFontSize"
-            />
-            <label
-              class="radio-container__input-label font-size-large"
-              for="font-size"
-              >Large</label
-            >
-          </div>
+          <the-input
+            inputType="settingsCheckbox"
+            label="Small"
+            name="font-size"
+            checkboxValue="14"
+            v-model:newFontSize="newFontSize"
+            updateType="update:newFontSize"
+            :shouldBeChecked="newFontSize"
+            additionalClass="font-size-small"
+          />
+          <the-input
+            inputType="settingsCheckbox"
+            label="Medium"
+            name="font-size"
+            checkboxValue="16"
+            v-model:newFontSize="newFontSize"
+            updateType="update:newFontSize"
+            :shouldBeChecked="newFontSize"
+            additionalClass="font-size-medium"
+          />
+          <the-input
+            inputType="settingsCheckbox"
+            label="Large"
+            name="font-size"
+            checkboxValue="18"
+            v-model:newFontSize="newFontSize"
+            updateType="update:newFontSize"
+            :shouldBeChecked="newFontSize"
+            additionalClass="font-size-large"
+          />
         </div>
       </div>
     </template>
@@ -212,11 +164,13 @@
 <script>
 import TheModal from "./TheModal.vue";
 import TheButton from "@/components/TheButton.vue";
+import TheInput from "@/components/TheInput.vue";
 
 export default {
   components: {
     TheModal,
-    TheButton
+    TheButton,
+    TheInput
   },
   emits: ["closeModal"],
   data() {
@@ -383,61 +337,6 @@ export default {
   justify-content: space-evenly;
 }
 
-.input-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-
-  &::after {
-    content: "min";
-    display: block;
-    position: absolute;
-    top: -40%;
-    right: 0;
-    font-size: 0.8rem;
-    font-family: var(--active-font-family);
-    font-weight: lighter;
-    color: $base-color;
-    transform: rotate(45deg) translate(50%, -50%);
-    margin-right: $modal-padding;
-  }
-
-  &__label {
-    font-size: $settings-input-label-font-size;
-    margin-left: $modal-padding;
-  }
-
-  &__input {
-    width: $settings-input-width;
-    border-radius: $base-border-radius;
-    padding: 0.3rem;
-    border: none;
-    background-color: $base-color;
-    color: $white;
-    text-align: right;
-    font-family: var(--active-font-family);
-    letter-spacing: 0.2rem;
-    transition: 0.2s ease-in-out;
-    margin-right: $modal-padding;
-
-    &:hover {
-      background-color: lighten($base-color, 10%);
-      color: darken($white, 10%);
-    }
-
-    &:focus {
-      transform: scaleX(1.1);
-      outline: none;
-    }
-
-    &.failed {
-      box-shadow: $modal-input-failed;
-    }
-  }
-}
-
 .radio-container {
   font-family: var(--active-font-family);
   display: flex;
@@ -456,54 +355,6 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-  }
-
-  &__font-input-container,
-  &__theme-input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 2rem;
-    height: 100%;
-  }
-
-  &__input-label {
-    font-size: 0.8rem;
-  }
-
-  &__input {
-    position: relative;
-    cursor: pointer;
-
-    &::after {
-      content: "";
-      display: block;
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 50rem;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: $base-color;
-    }
-
-    &:checked {
-      &::before {
-        content: "";
-        display: block;
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 50rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: var(--active-theme-color);
-        z-index: 1;
-      }
-    }
   }
 }
 
