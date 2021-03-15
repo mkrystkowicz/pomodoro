@@ -43,7 +43,7 @@ export default {
     currentValue: Number,
     updateType: String,
     checkboxValue: String,
-    shouldBeChecked: Boolean,
+    shouldBeChecked: String,
     additionalClass: String
   },
   data() {
@@ -85,29 +85,28 @@ export default {
 
   &__input {
     width: $settings-input-width;
-    border-radius: $base-border-radius;
     padding: 0.3rem;
     border: none;
-    background-color: $base-color;
-    color: $white;
+    border-bottom: 2px solid $base-color;
+    color: $base-color;
     text-align: right;
     font-family: var(--active-font-family);
     letter-spacing: 0.2rem;
-    transition: 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     margin-right: $modal-padding;
-
-    &:hover {
-      background-color: lighten($base-color, 10%);
-      color: darken($white, 10%);
-    }
 
     &:focus {
       transform: scaleX(1.1);
       outline: none;
     }
 
+    &::placeholder {
+      color: lighten($base-color, 60%);
+    }
+
     &.failed {
-      box-shadow: $modal-input-failed;
+      border-bottom: 2px solid $red-color;
+      color: $red-color;
     }
   }
 }
