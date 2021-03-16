@@ -135,8 +135,9 @@ export default {
       content: "";
       width: 0.3rem;
       height: 1.3rem;
-      background-color: white;
+      background-color: $white;
       position: absolute;
+      border-radius: 5px;
       top: 0;
       left: 50%;
       transform: translate(-50%, -70%);
