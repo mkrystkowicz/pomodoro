@@ -9,7 +9,7 @@ export default {
   props: {
     look: {
       type: String,
-      value: ["counter", "primary", "flat"]
+      value: ["counter", "primary", "flat", "add-stats-button"]
     }
   }
 };
@@ -69,6 +69,22 @@ export default {
     border: 0.1rem solid transparent;
     color: $white;
     transform: scale(1.1);
+  }
+}
+
+.add-stats-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.3rem;
+  color: $lighter-gray-color;
+  background: none;
+
+  &:hover {
+    background: darken($lighter-gray-color, 10%);
+    border-radius: 50%;
   }
 }
 </style>

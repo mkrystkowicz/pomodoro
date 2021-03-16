@@ -1,4 +1,5 @@
 <template>
+  {{ visualSettings }}
   <div class="container">
     <TheHeader @click="setAnimation" />
     <div class="view-container">
@@ -9,7 +10,12 @@
           </transition>
         </router-view>
       </div>
-      <p>{{ visualSettings }}</p>
+      <div class="stats-input-container">
+        <the-input class="stats-input-container__input" />
+        <the-button look="stats-input-container__button add-stats-button">
+          <AddIcon color="#494949" />
+        </the-button>
+      </div>
       <ul class="modal-nav">
         <li
           class="modal-nav__item unselectable"
@@ -21,9 +27,9 @@
           class="modal-nav__item unselectable"
           @click="settingsOpened = !settingsOpened"
         >
-          settings
+          <SettingsIcon class="settings-icon" color="#494949" />
         </li>
-        <!-- <li class="modal-nav__item unselectable">history</li> -->
+        <li class="modal-nav__item unselectable">history</li>
       </ul>
     </div>
     <the-settings
@@ -39,14 +45,22 @@
 
 <script>
 import TheHeader from "@/components/Header/TheHeader.vue";
-import TheSettings from "./components/Modal/TheSettings.vue";
-import TheInfo from "./components/Modal/TheInfo.vue";
+import TheSettings from "@/components/Modal/TheSettings.vue";
+import TheInfo from "@/components/Modal/TheInfo.vue";
+import TheInput from "@/components/TheInput.vue";
+import TheButton from "@/components/TheButton.vue";
+import AddIcon from "@/components/Icons/AddIcon.vue";
+import SettingsIcon from "@/components/Icons/SettingsIcon.vue";
 
 export default {
   components: {
     TheHeader,
     TheSettings,
-    TheInfo
+    TheInfo,
+    TheInput,
+    TheButton,
+    AddIcon,
+    SettingsIcon
   },
   data() {
     return {
@@ -125,8 +139,20 @@ export default {
   animation: $counter-entrance-animation;
 }
 
+.stats-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__input {
+    width: 100%;
+  }
+}
+
 .modal-nav {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
   list-style: none;
   animation: modal-nav-animation $navs-animation-duration ease-out;
 
@@ -143,6 +169,14 @@ export default {
 
     @media (min-width: 2000px) {
       font-size: 1.3rem;
+    }
+  }
+
+  .settings-icon {
+    transition: 0.4s ease-in;
+
+    &:hover {
+      transform: rotate(360deg);
     }
   }
 }

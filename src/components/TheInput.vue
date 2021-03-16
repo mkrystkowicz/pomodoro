@@ -13,7 +13,7 @@
   </div>
   <div
     class="radio-container__theme-input-container"
-    v-if="inputType === 'settingsCheckbox'"
+    v-else-if="inputType === 'settingsCheckbox'"
   >
     <input
       class="radio-container__input"
@@ -31,6 +31,7 @@
       >{{ label }}</label
     >
   </div>
+  <input v-else class="stats-input" type="text" />
 </template>
 
 <script>
@@ -156,5 +157,16 @@ export default {
       z-index: 1;
     }
   }
+}
+
+.stats-input {
+  @extend .input-container__input;
+
+  width: 100%;
+  background: transparent;
+  border-bottom-color: $lighter-gray-color;
+  color: $lighter-gray-color;
+  text-align: left;
+  letter-spacing: 0;
 }
 </style>
