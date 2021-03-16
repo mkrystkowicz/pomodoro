@@ -29,7 +29,7 @@
         >
           <SettingsIcon class="settings-icon" color="#494949" />
         </li>
-        <li class="modal-nav__item unselectable">history</li>
+        <li class="modal-nav__item unselectable">stats</li>
       </ul>
     </div>
     <the-settings
@@ -143,6 +143,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  animation: modal-nav-and-stats-input-animation $navs-animation-duration
+    ease-out;
 
   &__input {
     width: 100%;
@@ -154,7 +156,8 @@ export default {
   align-items: center;
   justify-content: space-around;
   list-style: none;
-  animation: modal-nav-animation $navs-animation-duration ease-out;
+  animation: modal-nav-and-stats-input-animation $navs-animation-duration
+    ease-out;
 
   &__item {
     color: lighten($base-color, 15%);
@@ -190,7 +193,7 @@ export default {
   }
 }
 
-@keyframes modal-nav-animation {
+@keyframes modal-nav-and-stats-input-animation {
   from {
     opacity: 0;
     transform: translateY(30px);
