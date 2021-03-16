@@ -95,6 +95,7 @@ export default {
     letter-spacing: 0.2rem;
     transition: all 0.2s ease-in-out;
     margin-right: $modal-padding;
+    border-radius: 0;
 
     &:focus {
       transform: scaleX(1.1);
