@@ -1,16 +1,9 @@
 import { createStore } from "vuex";
+import { v4 as uuidv4 } from "uuid";
 
 export default createStore({
   state: {
-    stats: [
-      {
-        name: "input",
-        pomodoroTime: 150000,
-        shortBreaksTime: 10000,
-        longBreaksTime: 100000,
-        totalTime: 120000
-      }
-    ],
+    stats: [],
     visualSettings: {
       themeColor: "#e0bc44",
       font: "Poppins",
@@ -156,6 +149,7 @@ export default createStore({
 
       const newStat = {
         name: statName,
+        id: uuidv4(),
         pomodoroTime: 0,
         shortBreaksTime: 0,
         longBreaksTime: 0,
