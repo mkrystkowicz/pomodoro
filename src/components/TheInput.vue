@@ -31,7 +31,15 @@
       >{{ label }}</label
     >
   </div>
-  <input v-else class="stats-input" type="text" />
+  <input
+    v-else
+    class="stats-input"
+    type="text"
+    v-model="inputValue"
+    @input="$emit(updateType, inputValue)"
+    @focus="$emit('statsInputFocused')"
+    @blur="$emit('statsInputFocused')"
+  />
 </template>
 
 <script>

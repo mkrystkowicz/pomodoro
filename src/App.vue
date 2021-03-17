@@ -11,8 +11,17 @@
         </router-view>
       </div>
       <div class="stats-input-container">
-        <the-input class="stats-input-container__input" />
-        <the-button look="stats-input-container__button add-stats-button">
+        <the-input
+          class="stats-input-container__input"
+          v-model:statsInputValue="statsInputValue"
+          updateType="update:statsInputValue"
+          @statsInputFocused="handleStatsInputFocus"
+          @keypress.enter="addNewStat"
+        />
+        <the-button
+          look="stats-input-container__button add-stats-button"
+          @click="addNewStat"
+        >
           <AddIcon color="#494949" />
         </the-button>
       </div>
@@ -40,6 +49,7 @@
       v-if="infoOpened"
       @closeModal="infoOpened = !infoOpened"
     ></the-info>
+    <p>{{ getStats }}</p>
   </div>
 </template>
 
@@ -66,7 +76,9 @@ export default {
     return {
       settingsOpened: false,
       infoOpened: false,
-      animationDirection: "to-left"
+      animationDirection: "to-left",
+      statsInputValue: "",
+      statsInputFocused: false
     };
   },
   methods: {
@@ -96,6 +108,12 @@ export default {
       root.style.setProperty("--active-theme-color", themeColor);
       root.style.setProperty("--active-font-family", font);
       root.style.setProperty("--active-font-size", fontSize + "px");
+    },
+    handleStatsInputFocus() {
+      return (this.statsInputFocused = !this.statsInputFocused);
+    },
+    addNewStat() {
+      return this.$store.commit("addNewStat", this.statsInputValue);
     }
   },
   computed: {
@@ -111,6 +129,9 @@ export default {
       }
 
       return this.setNewVisualSettings(visualSettings);
+    },
+    getStats() {
+      return this.$store.getters.getStats;
     }
   }
 };
