@@ -3,23 +3,40 @@
   <div class="container">
     <TheHeader @click="setAnimation" />
     <div class="view-container">
-      <div class="counter-container">
+      <div class="counter-container" v-if="!statsInputFocused">
         <router-view v-slot="{ Component }">
           <transition :name="animationDirection" mode="out-in">
             <component :is="Component" />
           </transition>
         </router-view>
       </div>
-      <div class="stats-input-container">
+      <div class="available-stats-container" v-else>
+        <the-button
+          look="available-stats-container__button svg-button"
+          @click="() => handleStatsInputFocus(false)"
+        >
+          <CloseIcon color="#494949" />
+        </the-button>
+        <ul class="available-stats-container__list">
+          <li
+            class="available-stats-container__list-item"
+            v-for="stat in getStats()"
+            :key="stat.key"
+          >
+            {{ stat.name }}
+          </li>
+        </ul>
+      </div>
+      <div class="stats-container">
         <the-input
-          class="stats-input-container__input"
-          v-model:statsInputValue="statsInputValue"
-          updateType="update:statsInputValue"
-          @statsInputFocused="handleStatsInputFocus"
+          class="stats-container__input"
+          v-model:currentStat="currentStat"
+          updateType="update:currentStat"
+          @statsInputFocused="() => handleStatsInputFocus(true)"
           @keypress.enter="addNewStat"
         />
         <the-button
-          look="stats-input-container__button add-stats-button"
+          look="stats-container__button svg-button"
           @click="addNewStat"
         >
           <AddIcon color="#494949" />
@@ -49,7 +66,6 @@
       v-if="infoOpened"
       @closeModal="infoOpened = !infoOpened"
     ></the-info>
-    <p>{{ getStats }}</p>
   </div>
 </template>
 
@@ -61,6 +77,7 @@ import TheInput from "@/components/TheInput.vue";
 import TheButton from "@/components/TheButton.vue";
 import AddIcon from "@/components/Icons/AddIcon.vue";
 import SettingsIcon from "@/components/Icons/SettingsIcon.vue";
+import CloseIcon from "@/components/Icons/CloseIcon.vue";
 
 export default {
   components: {
@@ -70,14 +87,15 @@ export default {
     TheInput,
     TheButton,
     AddIcon,
-    SettingsIcon
+    SettingsIcon,
+    CloseIcon
   },
   data() {
     return {
       settingsOpened: false,
       infoOpened: false,
       animationDirection: "to-left",
-      statsInputValue: "",
+      currentStat: "",
       statsInputFocused: false
     };
   },
@@ -109,11 +127,17 @@ export default {
       root.style.setProperty("--active-font-family", font);
       root.style.setProperty("--active-font-size", fontSize + "px");
     },
-    handleStatsInputFocus() {
-      return (this.statsInputFocused = !this.statsInputFocused);
+    handleStatsInputFocus(focus) {
+      return (this.statsInputFocused = focus);
     },
     addNewStat() {
-      return this.$store.commit("addNewStat", this.statsInputValue);
+      return this.$store.commit("addNewStat", this.currentStat);
+    },
+    getStats() {
+      return this.$store.getters.getStats;
+    },
+    chooseCurrentStat() {
+      this.statsInputFocused = true;
     }
   },
   computed: {
@@ -129,9 +153,6 @@ export default {
       }
 
       return this.setNewVisualSettings(visualSettings);
-    },
-    getStats() {
-      return this.$store.getters.getStats;
     }
   }
 };
@@ -160,15 +181,55 @@ export default {
   animation: $counter-entrance-animation;
 }
 
-.stats-input-container {
+.available-stats-container {
+  @extend .counter-container;
+
+  width: $mobile-clock-face;
+  height: $mobile-clock-face;
+  animation: counter-animation 0.2s 0.4s ease-out forwards;
+  overflow-y: scroll;
+  position: relative;
+
+  &__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin-top: 3rem;
+  }
+
+  &__list-item {
+    margin: 5px 0;
+    color: lighten($base-color, 40%);
+    background-color: lighten($base-color, 5%);
+    padding: 10px 15px;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten($base-color, 10%);
+    }
+  }
+}
+
+.stats-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   animation: modal-nav-and-stats-input-animation $navs-animation-duration
     ease-out;
 
   &__input {
+    flex-basis: 70%;
     width: 100%;
+  }
+
+  &__button {
+    flex-basis: 10%;
   }
 }
 

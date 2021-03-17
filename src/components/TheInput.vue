@@ -37,8 +37,7 @@
     type="text"
     v-model="inputValue"
     @input="$emit(updateType, inputValue)"
-    @focus="$emit('statsInputFocused')"
-    @blur="$emit('statsInputFocused')"
+    @focus="$emit('statsInputFocused', true)"
   />
 </template>
 

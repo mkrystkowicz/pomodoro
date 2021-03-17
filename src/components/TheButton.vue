@@ -9,7 +9,7 @@ export default {
   props: {
     look: {
       type: String,
-      value: ["counter", "primary", "flat", "add-stats-button"]
+      value: ["counter", "primary", "flat", "svg-button"]
     }
   }
 };
@@ -72,7 +72,7 @@ export default {
   }
 }
 
-.add-stats-button {
+.svg-button {
   display: flex;
   align-items: center;
   justify-content: center;
