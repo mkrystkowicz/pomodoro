@@ -22,6 +22,7 @@
             class="available-stats-container__list-item"
             v-for="stat in getStats()"
             :key="stat.key"
+            @click="chooseCurrentStat(stat.name)"
           >
             {{ stat.name }}
           </li>
@@ -32,6 +33,7 @@
           class="stats-container__input"
           v-model:currentStat="currentStat"
           updateType="update:currentStat"
+          :currentValue="currentStat"
           @statsInputFocused="() => handleStatsInputFocus(true)"
           @keypress.enter="addNewStat"
         />
@@ -136,8 +138,8 @@ export default {
     getStats() {
       return this.$store.getters.getStats;
     },
-    chooseCurrentStat() {
-      this.statsInputFocused = true;
+    chooseCurrentStat(stat) {
+      this.currentStat = stat;
     }
   },
   computed: {

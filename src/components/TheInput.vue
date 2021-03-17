@@ -35,6 +35,7 @@
     v-else
     class="stats-input"
     type="text"
+    :placeholder="currentValue"
     v-model="inputValue"
     @input="$emit(updateType, inputValue)"
     @focus="$emit('statsInputFocused', true)"
@@ -48,7 +49,7 @@ export default {
     label: String,
     inputFailed: Boolean,
     name: String,
-    currentValue: Number,
+    currentValue: [Number, String],
     updateType: String,
     checkboxValue: String,
     shouldBeChecked: String,
@@ -176,5 +177,9 @@ export default {
   color: $lighter-gray-color;
   text-align: left;
   letter-spacing: 0;
+
+  &::placeholder {
+    color: $lighter-gray-color;
+  }
 }
 </style>
