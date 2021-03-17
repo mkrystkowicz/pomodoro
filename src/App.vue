@@ -21,6 +21,12 @@
           class="available-stats-container__list"
           @click="() => handleStatsInputFocus(true)"
         >
+          <p
+            v-if="!getStats().length"
+            class="available-stats-container__list-is-empty"
+          >
+            You must add new task to your stats to see a list
+          </p>
           <li
             class="available-stats-container__list-item"
             v-for="stat in getStats()"
@@ -208,6 +214,13 @@ export default {
   &__list {
     list-style: none;
     margin-top: 3rem;
+  }
+
+  &__list-is-empty {
+    font-size: 1rem;
+    text-align: center;
+    padding: 2rem 0;
+    color: $lighter-gray-color;
   }
 
   &__list-item {
