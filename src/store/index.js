@@ -2,6 +2,15 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    stats: [
+      {
+        name: "input",
+        pomodoroTime: 150000,
+        shortBreaksTime: 10000,
+        longBreaksTime: 100000,
+        totalTime: 120000
+      }
+    ],
     visualSettings: {
       themeColor: "#e0bc44",
       font: "Poppins",
@@ -56,6 +65,9 @@ export default createStore({
     },
     getVisualSettings: state => {
       return state.visualSettings;
+    },
+    getStats: state => {
+      return state.stats;
     }
   },
   mutations: {
@@ -137,6 +149,20 @@ export default createStore({
         "pomodoroSettings",
         JSON.stringify(settingsBeingSaved)
       );
+    },
+    addNewStat: (state, statName) => {
+      const existingStat = state.stats.find(stat => stat.name === statName);
+      if (existingStat || !statName) return;
+
+      const newStat = {
+        name: statName,
+        pomodoroTime: 0,
+        shortBreaksTime: 0,
+        longBreaksTime: 0,
+        totalTime: 0
+      };
+
+      return state.stats.push(newStat);
     }
   },
   actions: {
