@@ -17,7 +17,10 @@
         >
           <CloseIcon color="#494949" />
         </the-button>
-        <ul class="available-stats-container__list">
+        <ul
+          class="available-stats-container__list"
+          @click="() => handleStatsInputFocus(true)"
+        >
           <li
             class="available-stats-container__list-item"
             v-for="stat in getStats()"
@@ -30,6 +33,7 @@
       </div>
       <div class="stats-container">
         <the-input
+          ref="statsInput"
           class="stats-container__input"
           v-model:currentStat="currentStat"
           updateType="update:currentStat"
@@ -130,6 +134,9 @@ export default {
       root.style.setProperty("--active-font-size", fontSize + "px");
     },
     handleStatsInputFocus(focus) {
+      if (focus === true) {
+        this.$refs.statsInput.$el.focus();
+      }
       return (this.statsInputFocused = focus);
     },
     addNewStat() {
