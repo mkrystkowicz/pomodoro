@@ -152,7 +152,8 @@ export default {
       return this.$store.getters.getStats;
     },
     chooseCurrentStat(stat) {
-      this.currentStat = stat;
+      this.$refs.statsInput.$el.value = "";
+      return (this.currentStat = stat);
     }
   },
   computed: {
