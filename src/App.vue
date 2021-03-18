@@ -41,8 +41,8 @@
         <the-input
           ref="statsInput"
           class="stats-container__input"
-          v-model:currentStat="currentStat"
-          updateType="update:currentStat"
+          v-model:statsInputValue="statsInputValue"
+          updateType="update:statsInputValue"
           :currentValue="currentStat"
           @statsInputFocused="() => handleStatsInputFocus(true)"
           @keypress.enter="addNewStat"
@@ -108,6 +108,7 @@ export default {
       infoOpened: false,
       animationDirection: "to-left",
       currentStat: "",
+      statsInputValue: "",
       statsInputFocused: false
     };
   },
@@ -140,20 +141,28 @@ export default {
       root.style.setProperty("--active-font-size", fontSize + "px");
     },
     handleStatsInputFocus(focus) {
+      this.$refs.statsInput.$el.value = "";
       if (focus === true) {
         this.$refs.statsInput.$el.focus();
       }
       return (this.statsInputFocused = focus);
     },
-    addNewStat() {
-      return this.$store.commit("addNewStat", this.currentStat);
-    },
     getStats() {
       return this.$store.getters.getStats;
     },
+    addNewStat() {
+      this.currentStat = this.statsInputValue;
+      this.addCurrentStatToStorage(this.statsInputValue);
+
+      return this.$store.commit("addNewStat", this.statsInputValue);
+    },
     chooseCurrentStat(stat) {
-      this.$refs.statsInput.$el.value = "";
-      return (this.currentStat = stat);
+      this.currentStat = stat;
+
+      return this.addCurrentStatToStorage(stat);
+    },
+    addCurrentStatToStorage(stat) {
+      return window.localStorage.setItem("currentTask", stat);
     }
   },
   computed: {
