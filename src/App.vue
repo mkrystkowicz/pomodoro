@@ -148,7 +148,17 @@ export default {
       return (this.statsInputFocused = focus);
     },
     getStats() {
-      return this.$store.getters.getStats;
+      const allStats = this.$store.getters.getStats;
+      const filteredStats = allStats.filter(el =>
+        el.name.toLowerCase().includes(this.statsInputValue.toLowerCase())
+      );
+      console.log(filteredStats);
+
+      if (filteredStats) {
+        return filteredStats;
+      } else {
+        return allStats;
+      }
     },
     addNewStat() {
       this.currentStat = this.statsInputValue;
