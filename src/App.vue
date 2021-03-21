@@ -78,6 +78,7 @@
       v-if="infoOpened"
       @closeModal="infoOpened = !infoOpened"
     ></the-info>
+    {{ getStats() }}
   </div>
 </template>
 
@@ -149,10 +150,9 @@ export default {
     },
     getStats() {
       const allStats = this.$store.getters.getStats;
-      const filteredStats = allStats.filter(el =>
-        el.name.toLowerCase().includes(this.statsInputValue.toLowerCase())
+      const filteredStats = allStats.filter(stats =>
+        stats.name.toLowerCase().includes(this.statsInputValue.toLowerCase())
       );
-      console.log(filteredStats);
 
       if (filteredStats) {
         return filteredStats;
@@ -179,6 +179,8 @@ export default {
     visualSettings() {
       const localStorage = window.localStorage.getItem("pomodoroSettings");
       let visualSettings;
+
+      this.$store.commit("importStatsFromStorage");
 
       if (localStorage) {
         this.$store.commit("setNewSettings", JSON.parse(localStorage));

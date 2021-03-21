@@ -169,12 +169,12 @@ export default createStore({
         id: uuidv4(),
         pomodoroTime: 0,
         shortBreakTime: 0,
-        longBreakTime: 0,
-        totalTime: 0
+        longBreakTime: 0
       };
 
-      state.stats.push(newStat);
-
+      return state.stats.push(newStat);
+    },
+    saveStatsInStorage(state) {
       return window.localStorage.setItem(
         "allStats",
         JSON.stringify(state.stats)
@@ -202,6 +202,7 @@ export default createStore({
         counter.isRunning = true;
         interval = setInterval(() => {
           if (!counter.isRunning) clearInterval(interval);
+          commit("saveStatsInStorage");
           commit("decrementTime", counterType);
         }, 200);
       } else if (counter.isRunning) {
