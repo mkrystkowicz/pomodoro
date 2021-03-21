@@ -163,7 +163,8 @@ export default {
       this.currentStat = this.statsInputValue;
       this.addCurrentStatToStorage(this.statsInputValue);
 
-      return this.$store.commit("addNewStat", this.statsInputValue);
+      this.$store.commit("addNewStat", this.statsInputValue);
+      return this.$store.commit("saveStatsInStorage");
     },
     chooseCurrentStat(stat) {
       this.currentStat = stat;
