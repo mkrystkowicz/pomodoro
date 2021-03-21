@@ -78,7 +78,6 @@
       v-if="infoOpened"
       @closeModal="infoOpened = !infoOpened"
     ></the-info>
-    {{ getStats() }}
   </div>
 </template>
 
@@ -221,10 +220,7 @@ export default {
 .available-stats-container {
   @extend .counter-container;
 
-  width: $mobile-clock-face;
-  height: $mobile-clock-face;
   animation: counter-animation 0.2s 0.4s ease-out forwards;
-  overflow-y: scroll;
   position: relative;
 
   &__button {
@@ -234,6 +230,9 @@ export default {
   }
 
   &__list {
+    width: $mobile-clock-face;
+    height: $mobile-clock-face;
+    overflow-y: scroll;
     list-style: none;
     margin-top: 3rem;
   }
