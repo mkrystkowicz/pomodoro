@@ -69,7 +69,25 @@ export default createStore({
         counter => counter.counterType === counterType
       );
       if (counter.timeLeft === 0) return 0;
-      else return (counter.timeLeft -= 200);
+      // else return (counter.timeLeft -= 200);
+      else {
+        const currentTask = window.localStorage.getItem("currentTask");
+
+        if (currentTask) {
+          const filteredStats = state.stats.filter(
+            stat => stat.name === currentTask
+          );
+
+          if (counterType === "pomodoro-counter")
+            filteredStats[0].pomodoroTime += 200;
+          else if (counterType === "short-break")
+            filteredStats[0].shortBreakTime += 200;
+          else if (counterType === "long-break")
+            filteredStats[0].longBreakTime += 200;
+        }
+
+        return (counter.timeLeft -= 200);
+      }
     },
     resetCounter: (state, counterType) => {
       const counter = state.counters.find(
@@ -151,8 +169,8 @@ export default createStore({
         name: statName,
         id: uuidv4(),
         pomodoroTime: 0,
-        shortBreaksTime: 0,
-        longBreaksTime: 0,
+        shortBreakTime: 0,
+        longBreakTime: 0,
         totalTime: 0
       };
 
