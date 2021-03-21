@@ -69,7 +69,6 @@ export default createStore({
         counter => counter.counterType === counterType
       );
       if (counter.timeLeft === 0) return 0;
-      // else return (counter.timeLeft -= 200);
       else {
         const currentTask = window.localStorage.getItem("currentTask");
 
@@ -174,7 +173,21 @@ export default createStore({
         totalTime: 0
       };
 
-      return state.stats.push(newStat);
+      state.stats.push(newStat);
+
+      return window.localStorage.setItem(
+        "allStats",
+        JSON.stringify(state.stats)
+      );
+    },
+    importStatsFromStorage(state) {
+      const storageStats = JSON.parse(window.localStorage.getItem("allStats"));
+
+      if (!storageStats) {
+        return;
+      } else {
+        return (state.stats = storageStats);
+      }
     }
   },
   actions: {
