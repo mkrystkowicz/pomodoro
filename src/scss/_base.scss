@@ -21,6 +21,63 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $lighter-gray-color;
+  font-family: var(--active-font-family);
+}
+
+summary::marker {
+  display: none;
+}
+
+summary::after {
+  content: "\25B6";
+  font-size: 0.8rem;
+  padding-right: 0.5em;
+  color: $lighter-gray-color;
+  transform: rotate(90deg);
+  transform-origin: 50% 50%;
+  transition: 0.3s ease-out;
+}
+
+details[open] .content {
+  animation-name: invisiblyGrowFontSize, fadeIn;
+  animation-duration: 500ms, 200ms;
+  animation-delay: 0ms, 500ms;
+  font-family: var(--active-font-family);
+}
+
+@keyframes invisiblyGrowFontSize {
+  0% {
+    font-size: 0;
+    opacity: 0;
+  }
+  100% {
+    font-size: 1em;
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+details[open] summary {
+  background-color: lighten($lighter-gray-color, 60%);
+}
+
+details[open] > summary::after {
+  content: "\25BC";
+  transform: rotate(180deg);
+}
+
 .font-crimson-theme {
   color: $red-color;
 }
@@ -55,4 +112,8 @@ input[type="number"] {
 
 .font-size-large {
   font-size: $large-font-size !important;
+}
+
+.font-weight-bold {
+  font-weight: 700;
 }

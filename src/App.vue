@@ -67,7 +67,12 @@
         >
           <SettingsIcon class="settings-icon" color="#494949" />
         </li>
-        <li class="modal-nav__item unselectable">stats</li>
+        <li
+          class="modal-nav__item unselectable"
+          @click="statsOpened = !statsOpened"
+        >
+          stats
+        </li>
       </ul>
     </div>
     <the-settings
@@ -78,6 +83,10 @@
       v-if="infoOpened"
       @closeModal="infoOpened = !infoOpened"
     ></the-info>
+    <the-stats
+      v-if="statsOpened"
+      @closeModal="statsOpened = !statsOpened"
+    ></the-stats>
   </div>
 </template>
 
@@ -90,6 +99,7 @@ import TheButton from "@/components/TheButton.vue";
 import AddIcon from "@/components/Icons/AddIcon.vue";
 import SettingsIcon from "@/components/Icons/SettingsIcon.vue";
 import CloseIcon from "@/components/Icons/CloseIcon.vue";
+import TheStats from "@/components/Modal/TheStats.vue";
 
 export default {
   components: {
@@ -100,12 +110,14 @@ export default {
     TheButton,
     AddIcon,
     SettingsIcon,
-    CloseIcon
+    CloseIcon,
+    TheStats
   },
   data() {
     return {
-      settingsOpened: false,
       infoOpened: false,
+      settingsOpened: false,
+      statsOpened: false,
       animationDirection: "to-left",
       currentStat: "",
       statsInputValue: "",

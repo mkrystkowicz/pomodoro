@@ -188,6 +188,10 @@ export default createStore({
       } else {
         return (state.stats = storageStats);
       }
+    },
+    deleteStat(state, id) {
+      const newList = state.stats.filter(stat => stat.id !== id);
+      return (state.stats = newList);
     }
   },
   actions: {
