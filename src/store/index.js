@@ -202,7 +202,6 @@ export default createStore({
         counter.isRunning = true;
         interval = setInterval(() => {
           if (!counter.isRunning) clearInterval(interval);
-          commit("saveStatsInStorage");
           commit("decrementTime", counterType);
         }, 200);
       } else if (counter.isRunning) {

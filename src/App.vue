@@ -1,5 +1,5 @@
 <template>
-  {{ visualSettings }}
+  {{ initialSettings }}
   <div class="container">
     <TheHeader @click="setAnimation" />
     <div class="view-container">
@@ -176,10 +176,13 @@ export default {
     },
     setStorageCurrentStat() {
       return (this.currentStat = window.localStorage.getItem("currentTask"));
+    },
+    saveStatsInStorage() {
+      return this.$store.commit("saveStatsInStorage");
     }
   },
   computed: {
-    visualSettings() {
+    initialSettings() {
       const localStorage = window.localStorage.getItem("pomodoroSettings");
       let visualSettings;
 
@@ -195,6 +198,12 @@ export default {
 
       return this.setNewVisualSettings(visualSettings);
     }
+  },
+  created() {
+    return window.addEventListener("beforeunload", this.saveStatsInStorage);
+  },
+  beforeUnmount() {
+    return window.removeEventListener("beforeunload", this.saveStatsInStorage);
   }
 };
 </script>
