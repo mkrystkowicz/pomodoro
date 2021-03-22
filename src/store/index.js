@@ -190,6 +190,13 @@ export default createStore({
       }
     },
     deleteStat(state, id) {
+      const currentStat = window.localStorage.getItem("currentTask");
+      const stat = state.stats.filter(stat => stat.id === id)[0];
+
+      if (currentStat === stat.name) {
+        window.localStorage.setItem("currentTask", "");
+      }
+
       const newList = state.stats.filter(stat => stat.id !== id);
       return (state.stats = newList);
     }
