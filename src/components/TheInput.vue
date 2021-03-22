@@ -34,6 +34,7 @@
   <input
     v-else
     class="stats-input"
+    :class="inputFailed ? 'failed' : ''"
     type="text"
     :placeholder="currentValue"
     v-model="inputValue"

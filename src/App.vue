@@ -43,6 +43,7 @@
           class="stats-container__input"
           v-model:statsInputValue="statsInputValue"
           updateType="update:statsInputValue"
+          :inputFailed="statsInputFailed"
           :currentValue="currentStat"
           @statsInputFocused="() => handleStatsInputFocus(true)"
           @keypress.enter="addNewStat"
@@ -121,6 +122,7 @@ export default {
       animationDirection: "to-left",
       currentStat: "",
       statsInputValue: "",
+      statsInputFailed: false,
       statsInputFocused: false
     };
   },
@@ -160,6 +162,7 @@ export default {
       return (this.statsInputFocused = focus);
     },
     getStats() {
+      this.statsInputFailed = false;
       const allStats = this.$store.getters.getStats;
       const filteredStats = allStats.filter(stats =>
         stats.name.toLowerCase().includes(this.statsInputValue.toLowerCase())
@@ -172,6 +175,9 @@ export default {
       }
     },
     addNewStat() {
+      if (this.statsInputValue.length === 0) {
+        return (this.statsInputFailed = true);
+      }
       this.currentStat = this.statsInputValue;
       this.addCurrentStatToStorage(this.statsInputValue);
 
