@@ -173,6 +173,9 @@ export default {
     },
     addCurrentStatToStorage(stat) {
       return window.localStorage.setItem("currentTask", stat);
+    },
+    setStorageCurrentStat() {
+      return (this.currentStat = window.localStorage.getItem("currentTask"));
     }
   },
   computed: {
@@ -180,6 +183,7 @@ export default {
       const localStorage = window.localStorage.getItem("pomodoroSettings");
       let visualSettings;
 
+      this.setStorageCurrentStat();
       this.$store.commit("importStatsFromStorage");
 
       if (localStorage) {
