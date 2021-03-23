@@ -72,6 +72,7 @@ export default {
     TheButton,
     DeleteIcon
   },
+  emits: ["closeModal"],
   methods: {
     getStats() {
       return this.$store.getters.getStats;
