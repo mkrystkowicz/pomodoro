@@ -6,9 +6,6 @@
 Pomodoro app counts your time during activities, it helps you with time tracking during pomodoris.
 ```
 
-### TODO:
-	Pomodoro-history
-
 ### Procedure
 
 ```
