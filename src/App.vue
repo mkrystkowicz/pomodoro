@@ -18,7 +18,7 @@
           <CloseIcon color="#494949" />
         </the-button>
         <ul
-          class="available-stats-container__list"
+          class="available-stats-container__list hide-scrollbar"
           @click="() => handleStatsInputFocus(true)"
         >
           <p
@@ -87,6 +87,7 @@
     <the-stats
       v-if="statsOpened"
       @closeModal="statsOpened = !statsOpened"
+      @statDeleted="name => clearInputOnDeletedElement(name)"
     ></the-stats>
   </div>
 </template>
@@ -178,25 +179,34 @@ export default {
       if (this.statsInputValue.length === 0) {
         return (this.statsInputFailed = true);
       }
+
       this.currentStat = this.statsInputValue;
       this.addCurrentStatToStorage(this.statsInputValue);
-
       this.$store.commit("addNewStat", this.statsInputValue);
+
       return this.$store.commit("saveStatsInStorage");
     },
     chooseCurrentStat(stat) {
       this.currentStat = stat;
-
       return this.addCurrentStatToStorage(stat);
     },
     addCurrentStatToStorage(stat) {
       return window.localStorage.setItem("currentTask", stat);
     },
-    setStorageCurrentStat() {
-      return (this.currentStat = window.localStorage.getItem("currentTask"));
-    },
     saveStatsInStorage() {
       return this.$store.commit("saveStatsInStorage");
+    },
+    getCurrentStatFromStorage() {
+      const savedStat = window.localStorage.getItem("currentTask");
+
+      return (this.currentStat = savedStat);
+    },
+    clearInputOnDeletedElement(name) {
+      if (this.currentStat === name) {
+        return (this.currentStat = "");
+      } else {
+        return;
+      }
     }
   },
   computed: {
@@ -204,7 +214,7 @@ export default {
       const localStorage = window.localStorage.getItem("pomodoroSettings");
       let visualSettings;
 
-      this.setStorageCurrentStat();
+      this.getCurrentStatFromStorage();
       this.$store.commit("importStatsFromStorage");
 
       if (localStorage) {
