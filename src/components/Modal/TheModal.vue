@@ -5,7 +5,7 @@
       <div class="modal-container__title">
         <slot name="title"></slot>
       </div>
-      <div class="modal-container__content">
+      <div class="modal-container__content hide-scrollbar">
         <slot></slot>
       </div>
       <div class="modal-container__footer">

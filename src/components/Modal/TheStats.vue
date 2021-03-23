@@ -6,7 +6,15 @@
     <template #default>
       <div class="stats__content">
         <ul class="stats__list">
-          <li class="stats__item" :key="stat.name" v-for="stat in getStats()">
+          <p v-if="!getStats().length" class="stats__list-is-empty">
+            There is no stats in memory - please add some.
+          </p>
+          <li
+            class="stats__item"
+            :key="stat.name"
+            v-for="stat in getStats()"
+            v-else
+          >
             <details>
               <summary class="stats__item-title">{{ stat.name }}</summary>
               <div class="stats__item-content content">
@@ -30,7 +38,7 @@
                   <the-button
                     class="stats__item-delete-btn"
                     look="svg-button"
-                    @click="deleteStat(stat.id)"
+                    @click="deleteStat(stat.name, stat.id)"
                     ><DeleteIcon color="#494949"
                   /></the-button>
                 </div>
@@ -80,7 +88,8 @@ export default {
         minutes < 10 ? "0" + minutes : minutes
       }m ${seconds < 10 ? "0" + seconds : seconds}s`;
     },
-    deleteStat(id) {
+    deleteStat(name, id) {
+      this.$emit("statDeleted", name);
       return this.$store.commit("deleteStat", id);
     }
   }
@@ -99,6 +108,13 @@ export default {
   }
   &__list {
     list-style-type: none;
+
+    &-is-empty {
+      font-family: var(--active-font-family);
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
   }
   &__item {
     margin-bottom: 10px;
