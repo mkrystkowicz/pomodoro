@@ -37,9 +37,9 @@
                 <div class="stats__item-button-container">
                   <the-button
                     class="stats__item-delete-btn"
-                    look="svg-button"
+                    look="svg-button-colored"
                     @click="deleteStat(stat.name, stat.id)"
-                    ><DeleteIcon color="#494949"
+                    ><DeleteIcon color="#ffffff"
                   /></the-button>
                 </div>
               </div>

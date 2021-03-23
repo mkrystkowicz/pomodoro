@@ -9,7 +9,7 @@ export default {
   props: {
     look: {
       type: String,
-      value: ["counter", "primary", "flat", "svg-button"]
+      value: ["counter", "primary", "flat", "svg-button", "svg-button-colored"]
     }
   }
 };
@@ -85,6 +85,15 @@ export default {
   &:hover {
     background: darken($lighter-gray-color, 10%);
     border-radius: 50%;
+  }
+}
+
+.svg-button-colored {
+  @extend .svg-button;
+  background: var(--active-theme-color);
+
+  &:hover {
+    transform: scale(1.2);
   }
 }
 </style>
