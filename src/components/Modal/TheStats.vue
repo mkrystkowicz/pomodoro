@@ -18,22 +18,46 @@
             <details>
               <summary class="stats__item-title">{{ stat.name }}</summary>
               <div class="stats__item-content content">
-                <p>Pomodoro: {{ convertTime(stat.pomodoroTime) }}</p>
-                <p>
-                  Short breaks:
-                  {{ convertTime(stat.shortBreakTime) }}
+                <p class="stats__item-text-information">
+                  Pomodoro:
+                  <span
+                    class="stats__item-text-information-amount font-weight-bold"
+                    >{{ convertTime(stat.pomodoroTime) }}</span
+                  >
                 </p>
-                <p>Long breaks: {{ convertTime(stat.longBreakTime) }}</p>
-                <p>Pomodoris count: {{ getPomodoris(stat.pomodoroTime) }}</p>
-                <p>
+                <p class="stats__item-text-information">
+                  Short breaks:
+                  <span
+                    class="stats__item-text-information-amount font-weight-bold "
+                    >{{ convertTime(stat.shortBreakTime) }}</span
+                  >
+                </p>
+                <p class="stats__item-text-information">
+                  Long breaks:
+                  <span
+                    class="stats__item-text-information-amount font-weight-bold "
+                    >{{ convertTime(stat.longBreakTime) }}</span
+                  >
+                </p>
+                <p class="stats__item-text-information">
+                  Pomodoris count:
+                  <span
+                    class="stats__item-text-information-amount font-weight-bold "
+                    >{{ getPomodoris(stat.pomodoroTime) }}</span
+                  >
+                </p>
+                <p class="stats__item-text-information">
                   Total time:
-                  {{
-                    getTotalTime(
-                      stat.pomodoroTime,
-                      stat.shortBreakTime,
-                      stat.longBreakTime
-                    )
-                  }}
+                  <span
+                    class="stats__item-text-information-amount font-weight-bold "
+                    >{{
+                      getTotalTime(
+                        stat.pomodoroTime,
+                        stat.shortBreakTime,
+                        stat.longBreakTime
+                      )
+                    }}</span
+                  >
                 </p>
                 <div class="stats__item-button-container">
                   <the-button
@@ -142,6 +166,14 @@ export default {
       padding: 5px 15px;
       background: $white;
       font-size: 0.8rem;
+    }
+
+    &-text-information {
+      line-height: 2.2;
+    }
+
+    &-text-information-amount {
+      font-size: 1rem;
     }
 
     &-button-container {
