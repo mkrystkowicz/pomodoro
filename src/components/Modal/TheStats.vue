@@ -24,8 +24,9 @@
                   {{ convertTime(stat.shortBreakTime) }}
                 </p>
                 <p>Long breaks: {{ convertTime(stat.longBreakTime) }}</p>
+                <p>Pomodoris count: {{ getPomodoris(stat.pomodoroTime) }}</p>
                 <p>
-                  Total:
+                  Total time:
                   {{
                     getTotalTime(
                       stat.pomodoroTime,
@@ -80,6 +81,17 @@ export default {
     getTotalTime(pomodoroTime, shortBreakTime, longBreakTime) {
       const total = pomodoroTime + shortBreakTime + longBreakTime;
       return this.convertTime(total);
+    },
+    getPomodoris(pomodoroTimePassed) {
+      const totalPomodoroTime = this.$store.getters.getCounterTotalTime(
+        "pomodoro-counter"
+      );
+
+      const pomodorisCouunter = Math.floor(
+        pomodoroTimePassed / totalPomodoroTime
+      );
+
+      return `${pomodorisCouunter}`;
     },
     convertTime(ms) {
       const seconds = Math.floor((ms / 1000) % 60);
