@@ -21,7 +21,7 @@ export default {
 .btn {
   box-sizing: border-box;
   font-family: var(--active-font-family);
-  padding: 5px 25px;
+  padding: $button-padding;
   border: 0.1rem solid transparent;
   border-radius: $base-border-radius;
   transition: all 0.2s ease-out;

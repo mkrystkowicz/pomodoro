@@ -48,7 +48,6 @@ export default {
   &__link {
     font-size: 0.7rem;
     padding: 1rem;
-    z-index: 2;
     color: lighten($base-color, 100%);
     text-decoration: none;
     text-align: center;

@@ -1,11 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Pomodoro from "../views/Pomodoro.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Pomodoro,
     redirect: { name: "Pomodoro" }
   },
   {
@@ -22,7 +20,8 @@ const routes = [
     path: "/long-break",
     name: "Long Break",
     component: () => import("../views/LongBreak.vue")
-  }
+  },
+  { path: "/:catchAll(.*)", component: () => import("../views/NotFound.vue") }
 ];
 
 const router = createRouter({
