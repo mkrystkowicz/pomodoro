@@ -199,6 +199,14 @@ export default createStore({
 
       const newList = state.stats.filter(stat => stat.id !== id);
       return (state.stats = newList);
+    },
+    setTimeLeft(state, payload) {
+      const { counterType, timeLeft } = payload;
+      const counter = state.counters.find(
+        counter => counter.counterType === counterType
+      );
+
+      return (counter.timeLeft = timeLeft);
     }
   },
   actions: {
@@ -208,10 +216,18 @@ export default createStore({
       );
 
       let interval;
+      const startedAtTime = new Date().getTime();
+      const counterTimeLeft = this.getters.getCounterTimeLeft(counterType);
+      const endingTime = startedAtTime + counterTimeLeft;
 
       if (!counter.isRunning) {
         counter.isRunning = true;
         interval = setInterval(() => {
+          if (document.hidden) {
+            const currentTime = new Date().getTime();
+            const timeLeft = endingTime - currentTime;
+            commit("setTimeLeft", { counterType, timeLeft });
+          }
           if (!counter.isRunning) clearInterval(interval);
           commit("decrementTime", counterType);
         }, 200);
