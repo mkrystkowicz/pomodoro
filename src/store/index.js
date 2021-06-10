@@ -225,7 +225,8 @@ export default createStore({
         interval = setInterval(() => {
           if (document.hidden) {
             const currentTime = new Date().getTime();
-            const timeLeft = endingTime - currentTime;
+            let timeLeft = endingTime - currentTime;
+            if (timeLeft <= 0) timeLeft = 0;
             commit("setTimeLeft", { counterType, timeLeft });
           }
           if (!counter.isRunning) clearInterval(interval);
