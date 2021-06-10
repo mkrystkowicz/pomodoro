@@ -72,5 +72,9 @@ export default {
   @media (min-width: 375px) {
     width: 20rem;
   }
+
+  @media (min-width: 2000px) {
+    width: 24rem;
+  }
 }
 </style>
