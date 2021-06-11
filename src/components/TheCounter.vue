@@ -51,7 +51,8 @@ export default {
   watch: {
     time() {
       if (this.time === 0) {
-        this.playAudio();
+        if (document.hidden) this.playAudio();
+        else this.playAudio();
       }
     }
   },

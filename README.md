@@ -10,7 +10,6 @@ Pomodoro app counts your time during activities, it helps you with time tracking
 
 ```
 Check live: https://quirky-lalande-a1a945.netlify.app
-!!! PLEASE, USE THE APP IN SEPARATED WINDOW - countdown freezes when tab is switched !!!
 ```
 
 ### Procedure
