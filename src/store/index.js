@@ -223,7 +223,7 @@ export default createStore({
       if (!counter.isRunning) {
         counter.isRunning = true;
         interval = setInterval(() => {
-          if (document.hidden) {
+          if (document.hidden || !document.hasFocus()) {
             const currentTime = new Date().getTime();
             let timeLeft = endingTime - currentTime;
             if (timeLeft <= 0) timeLeft = 0;
@@ -234,6 +234,7 @@ export default createStore({
         }, 200);
       } else if (counter.isRunning) {
         counter.isRunning = false;
+        clearInterval(interval);
       }
     }
   }
