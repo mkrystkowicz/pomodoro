@@ -21,26 +21,30 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+summary::after {
+  display: none;
+}
+
+summary::before {
+  content: "○";
+  padding-right: 0.5em;
   color: $lighter-gray-color;
-  font-family: var(--active-font-family);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] > summary::before {
+  content: "●";
 }
 
 summary::marker {
   display: none;
 }
 
-summary::after {
-  content: "\25B6";
-  font-size: 0.8rem;
-  padding-right: 0.5em;
-  color: $lighter-gray-color;
-  transform: rotate(90deg);
-  transform-origin: 50% 50%;
-  transition: 0.3s ease-out;
+summary::-webkit-details-marker {
+  display: none;
 }
 
 details[open] .content {

@@ -156,10 +156,19 @@ export default {
   &__item {
     margin-bottom: 10px;
     background: white;
+    font-family: var(--active-font-family);
+    cursor: pointer;
 
     &-title {
       padding: 10px 15px;
+      display: block;
       transition: 0.4s ease-in;
+      border-radius: $base-border-radius;
+      transition: all 0.2s ease-out;
+
+      &:hover {
+        background: lighten($lighter-gray-color, 60%);
+      }
     }
 
     &-content {
