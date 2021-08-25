@@ -1,8 +1,8 @@
 <template>
-  <div class="header">
+  <header class="header">
     <TheLogo />
     <TheNavigation />
-  </div>
+  </header>
 </template>
 
 <script>

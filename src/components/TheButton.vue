@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" :class="look">
+  <button class="btn" :class="look" :aria-label="ariaLabel">
     <slot></slot>
   </button>
 </template>
@@ -10,6 +10,9 @@ export default {
     look: {
       type: String,
       value: ["counter", "primary", "flat", "svg-button", "svg-button-colored"]
+    },
+    ariaLabel: {
+      type: String
     }
   }
 };

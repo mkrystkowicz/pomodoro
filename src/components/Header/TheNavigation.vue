@@ -1,15 +1,21 @@
 <template>
   <nav class="nav" @click="scrollToBottom">
     <ul class="nav__list">
-      <router-link class="nav__link unselectable" to="/pomodoro"
-        >pomodoro</router-link
-      >
-      <router-link class="nav__link unselectable" to="/short-break"
-        >short break</router-link
-      >
-      <router-link class="nav__link unselectable" to="/long-break"
-        >long break</router-link
-      >
+      <li class="nav__link-container">
+        <router-link class="nav__link unselectable" to="/pomodoro"
+          >pomodoro</router-link
+        >
+      </li>
+      <li class="nav__link-container">
+        <router-link class="nav__link unselectable" to="/short-break"
+          >short break</router-link
+        >
+      </li>
+      <li class="nav__link-container">
+        <router-link class="nav__link unselectable" to="/long-break"
+          >long break</router-link
+        >
+      </li>
     </ul>
   </nav>
 </template>
@@ -43,6 +49,12 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__link-container {
+    list-style: none;
+    display: flex;
+    align-items: center;
   }
 
   &__link {
