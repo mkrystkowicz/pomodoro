@@ -225,6 +225,10 @@ export default {
       return this.$emit("closeModal");
     },
     validateSettings({ newPomodoroTime, newShortBreakTime, newLongBreakTime }) {
+      this.pomodoroInputFailed = false;
+      this.shortBreakInputFailed = false;
+      this.longBreakInputFailed = false;
+
       const pomodoroNumber = parseInt(newPomodoroTime);
       const shortBreakNumber = parseInt(newShortBreakTime);
       const longBreakNumber = parseInt(newLongBreakTime);
