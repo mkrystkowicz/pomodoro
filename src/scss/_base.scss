@@ -54,6 +54,11 @@ details[open] .content {
   font-family: var(--active-font-family);
 }
 
+details,
+summary {
+  outline: none;
+}
+
 @keyframes invisiblyGrowFontSize {
   0% {
     font-size: 0;
