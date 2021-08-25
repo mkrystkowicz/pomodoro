@@ -37,7 +37,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/_base.scss";
 .nav {
-  width: 16rem;
+  width: 18rem;
   padding: 0.2rem;
   background-color: darken($base-color, 3%);
   border-radius: $base-border-radius;
