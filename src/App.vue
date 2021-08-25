@@ -301,16 +301,24 @@ export default {
 }
 
 .stats-container {
+  width: 14rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   animation: modal-nav-and-stats-input-animation $navs-animation-duration
     ease-out;
 
+  @media (min-width: 2000px) {
+    width: 18rem;
+  }
+
   &__input {
     flex-basis: 70%;
-    width: 100%;
+
+    @media (min-width: 2000px) {
+      font-size: 1.3rem;
+    }
   }
 
   &__button {
