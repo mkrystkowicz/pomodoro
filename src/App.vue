@@ -343,7 +343,7 @@ export default {
     cursor: pointer;
 
     &:hover {
-      color: lighten($base-color, 5%);
+      color: darken($lighter-gray-color, 15%);
     }
 
     @media (min-width: 2000px) {

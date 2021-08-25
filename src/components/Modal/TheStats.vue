@@ -167,7 +167,7 @@ export default {
       transition: all 0.2s ease-out;
 
       &:hover {
-        background: lighten($lighter-gray-color, 60%);
+        background: lighten($lighter-gray-color, 50%);
       }
     }
 
