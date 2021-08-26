@@ -95,6 +95,7 @@ export default {
 
   &__input {
     width: $settings-input-width;
+    background: $white;
     padding: 0.3rem;
     border: none;
     border-bottom: 2px solid $base-color;

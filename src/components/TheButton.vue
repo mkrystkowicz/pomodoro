@@ -86,7 +86,7 @@ export default {
   background: none;
 
   &:hover {
-    background: darken($lighter-gray-color, 35%);
+    background: darken($lighter-gray-color, 15%);
     border-radius: 50%;
   }
 }

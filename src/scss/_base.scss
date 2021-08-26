@@ -79,7 +79,7 @@ summary {
 }
 
 details[open] summary {
-  background-color: lighten($lighter-gray-color, 60%);
+  background: darken($lighter-gray-color, 15%);
 }
 
 details[open] > summary::after {

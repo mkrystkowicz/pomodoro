@@ -64,7 +64,7 @@
                     class="stats__item-delete-btn"
                     look="svg-button-colored"
                     @click="deleteStat(stat.name, stat.id)"
-                    ><DeleteIcon color="#ffffff"
+                    ><DeleteIcon color="#edf2f4"
                   /></the-button>
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default {
   }
   &__item {
     margin-bottom: 10px;
-    background: white;
+    background: $white;
     font-family: var(--active-font-family);
     cursor: pointer;
 
@@ -167,7 +167,7 @@ export default {
       transition: all 0.2s ease-out;
 
       &:hover {
-        background: lighten($lighter-gray-color, 50%);
+        background: darken($lighter-gray-color, 20%);
       }
     }
 

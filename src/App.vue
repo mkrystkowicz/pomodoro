@@ -15,7 +15,7 @@
           look="available-stats-container__button svg-button"
           @click="() => handleStatsInputFocus(false)"
         >
-          <CloseIcon color="#717171" />
+          <CloseIcon color="#8d99ae" />
         </the-button>
         <ul
           class="available-stats-container__list hide-scrollbar"
@@ -53,7 +53,7 @@
           ariaLabel="Add task"
           @click="addNewStat"
         >
-          <AddIcon color="#717171" />
+          <AddIcon color="#8d99ae" />
         </the-button>
       </div>
       <ul class="modal-nav">
@@ -67,7 +67,7 @@
           class="modal-nav__item unselectable"
           @click="settingsOpened = !settingsOpened"
         >
-          <SettingsIcon class="settings-icon" color="#717171" />
+          <SettingsIcon class="settings-icon" color="#8d99ae" />
         </li>
         <li
           class="modal-nav__item unselectable"
