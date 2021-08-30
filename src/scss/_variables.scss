@@ -18,8 +18,8 @@ $roboto-font-family: "Roboto", sans-serif;
 $base-font-family: "Poppins", sans-serif;
 $ubuntu-font-family: "Ubuntu", sans-serif;
 
-$large-font-size: 18px;
-$base-font-size: 16px;
+$large-font-size: 16px;
+$base-font-size: 15px;
 $small-font-size: 14px;
 
 $logo-font-size: 2rem;
@@ -47,7 +47,7 @@ $button-padding: 5px 25px;
 
 :root {
   --active-font-family: "Poppins", sans-serif;
-  --active-font-size: 16px;
+  --active-font-size: 15px;
   --active-theme-color: #df3131;
 
   font-size: var(--active-font-size);
