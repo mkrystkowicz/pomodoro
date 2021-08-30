@@ -35,6 +35,8 @@ export default {
 }
 
 .modal-container {
+  @include flex(column, flex-start);
+  @include colors($white, $base-color);
   position: fixed;
   padding: $modal-padding;
   align-items: center;
@@ -46,18 +48,13 @@ export default {
   height: 75vh;
   max-width: 35rem;
   max-height: 50rem;
-  background: $white;
-  color: $base-color;
   border-radius: $modal-border-radius;
   animation: 0.4s modalAnimation ease-in-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   &__title {
     width: 100%;
     text-align: center;
-    font-family: var(--active-font-family);
+    @include font(auto, auto, var(--active-font-family));
   }
 
   &__content {
@@ -72,12 +69,12 @@ export default {
   }
 
   &__footer {
+    @include colors($white);
     margin-top: 1rem;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: $white;
     padding: $modal-padding;
     border-radius: 0 0 $base-border-radius $base-border-radius;
     z-index: 1;

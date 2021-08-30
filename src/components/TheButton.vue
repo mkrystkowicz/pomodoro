@@ -22,8 +22,8 @@ export default {
 @import "@/scss/_base.scss";
 
 .btn {
+  @include font(auto, auto, var(--active-font-family));
   box-sizing: border-box;
-  font-family: var(--active-font-family);
   padding: $button-padding;
   border: 0.1rem solid transparent;
   border-radius: $base-border-radius;
@@ -37,63 +37,55 @@ export default {
 }
 
 .counter {
-  color: $base-color;
-  background-color: $white;
-  font-size: 1.2rem;
+  @include colors($white, $base-color);
+  @include font(1.2rem);
   border: none;
 
   &:hover {
-    background-color: $base-color;
-    color: $white;
+    @include colors($base-color, $white);
   }
 }
 
 .primary {
-  font-size: 1rem;
-  background-color: var(--active-theme-color);
-  color: $white;
+  @include font(1rem);
+  @include colors(var(--active-theme-color), $white);
 
   &:hover {
-    background-color: $white;
+    @include colors($white, var(--active-theme-color));
     border: 0.1rem solid var(--active-theme-color);
-    color: var(--active-theme-color);
     transform: scale(1.1);
   }
 }
 
 .flat {
-  font-size: 1rem;
-  background-color: $white;
-  color: var(--active-theme-color);
+  @include colors($white, var(--active-theme-color));
+  @include font(1rem);
   border: 0.1rem solid var(--active-theme-color);
 
   &:hover {
-    background-color: var(--active-theme-color);
+    @include colors(var(--active-theme-color), $white);
     border: 0.1rem solid transparent;
-    color: $white;
     transform: scale(1.1);
   }
 }
 
 .svg-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex;
+  @include colors(transparent, $lighter-gray-color);
   width: 2rem;
   height: 2rem;
   padding: 0.3rem;
-  color: $lighter-gray-color;
   background: none;
 
   &:hover {
-    background: darken($lighter-gray-color, 15%);
+    @include colors(darken($lighter-gray-color, 15%));
     border-radius: 50%;
   }
 }
 
 .svg-button-colored {
   @extend .svg-button;
-  background: var(--active-theme-color);
+  @include colors(var(--active-theme-color));
 
   &:hover {
     transform: scale(1.2);

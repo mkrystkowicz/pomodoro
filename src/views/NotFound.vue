@@ -14,7 +14,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/_variables.scss";
+@import "@/scss/_base.scss";
 
 .not-found {
   width: 100vw;
@@ -23,36 +23,29 @@
   top: 0;
   left: 0;
   z-index: 999;
-  background: $base-color;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include colors($base-color, $white);
+  @include flex(column, center);
 
   &__title {
-    color: $white;
-    font-size: 3rem;
+    @include font(3rem);
   }
 
   &__description {
-    color: $white;
+    @include font(1rem);
     margin: 3rem;
-    font-size: 1rem;
   }
 
   &__button {
-    color: $base-color;
-    background: $white;
+    @include colors($white, $base-color);
+    @include font(1.2rem);
     border: 2px solid $white;
     border-radius: $base-border-radius;
     padding: $button-padding;
-    font-size: 1.2rem;
     text-decoration: none;
     transition: all 0.2s ease-out;
 
     &:hover {
-      color: $white;
-      background: $base-color;
+      @include colors($base-color, $white);
       border: 2px solid $white;
     }
   }

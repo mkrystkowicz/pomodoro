@@ -96,9 +96,9 @@ export default {
 
 .counter {
   &__face {
+    @include colors(darken($base-color, 2%));
     width: $mobile-clock-face;
     height: $mobile-clock-face;
-    background-color: darken($base-color, 2%);
     border-radius: 150%;
     position: relative;
     box-shadow: $base-box-shadow;
@@ -133,10 +133,10 @@ export default {
     transition: 0.3s linear;
 
     &::after {
+      @include colors($white);
       content: "";
       width: 0.3rem;
       height: 1.3rem;
-      background-color: $white;
       position: absolute;
       border-radius: 5px;
       top: 0;
@@ -156,31 +156,24 @@ export default {
   }
 
   &__timer {
+    @include flex(column, center);
+    @include colors(transparent, $white);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: $white;
   }
 
   &__time {
-    font-size: 3rem;
+    @include font(3rem, 600, var(--active-font-family), italic);
     text-align: center;
-    font-weight: 600;
-    font-style: italic;
     letter-spacing: 0.2rem;
     user-select: none;
   }
 
   &__action {
-    font-size: 1rem;
-    font-weight: lighter;
+    @include font(1rem, 300, var(--active-font-family), normal);
     text-align: center;
-    font-weight: 300;
-    font-style: normal;
     user-select: none;
   }
 

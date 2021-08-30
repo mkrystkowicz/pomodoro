@@ -241,18 +241,15 @@ export default {
 @import "@/scss/_base.scss";
 
 .container {
+  @include colors($base-color);
+  @include font(auto, auto, var(--active-font-family));
   width: 100%;
   height: 100%;
-  background-color: $base-color;
-  font-family: var(--active-font-family);
 }
 
 .view-container {
-  display: flex;
+  @include flex(column, space-evenly);
   height: 70vh;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .counter-container {
@@ -281,7 +278,7 @@ export default {
   }
 
   &__list-is-empty {
-    font-size: 1rem;
+    @include font(1rem);
     text-align: center;
     padding: 2rem 0;
     color: $lighter-gray-color;
@@ -289,23 +286,20 @@ export default {
 
   &__list-item {
     margin: 5px 0;
-    color: lighten($base-color, 40%);
-    background-color: lighten($base-color, 5%);
+    @include colors(lighten($base-color, 5%), lighten($base-color, 40%));
     padding: 10px 15px;
     transition: 0.3s ease-out;
     cursor: pointer;
 
     &:hover {
-      background-color: lighten($base-color, 10%);
+      @include colors(lighten($base-color, 10%), lighten($base-color, 40%));
     }
   }
 }
 
 .stats-container {
+  @include flex(auto, space-around);
   width: 14rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   flex-wrap: wrap;
   animation: modal-nav-and-stats-input-animation $navs-animation-duration
     ease-out;
@@ -328,26 +322,24 @@ export default {
 }
 
 .modal-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  @include flex(auto, space-around);
   list-style: none;
   animation: modal-nav-and-stats-input-animation $navs-animation-duration
     ease-out;
 
   &__item {
-    color: $lighter-gray-color;
-    font-size: 1rem;
+    @include colors(transparent, $lighter-gray-color);
+    @include font(1rem);
     padding: 1rem;
     transition: all 0.2s ease-out;
     cursor: pointer;
 
     &:hover {
-      color: darken($lighter-gray-color, 15%);
+      @include colors(transparent, darken($lighter-gray-color, 15%));
     }
 
     @media (min-width: 2000px) {
-      font-size: 1.3rem;
+      @include font(1.3rem);
     }
   }
 

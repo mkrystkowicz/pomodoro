@@ -21,10 +21,7 @@ export default {
 @import "@/scss/_base.scss";
 
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  @include flex(column, space-evenly);
   height: 30vh;
   animation: header-animation $navs-animation-duration ease-out;
 }

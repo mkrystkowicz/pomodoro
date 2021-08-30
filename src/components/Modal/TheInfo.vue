@@ -7,7 +7,7 @@
       <div class="info__content">
         <section class="info__container">
           <h3 class="info__subtitle">About Pomodoro</h3>
-          <p class="info__about indent">
+          <p class="info__about">
             Pomodoro technique is a method used for time management wrought by
             <span class="bolded">Francesco Cirillo</span> in the 1980s. System
             uses short 25 minutes sections -
@@ -73,37 +73,34 @@ export default {
 
 .info {
   &__title {
-    font-weight: lighter;
+    @include font(auto, lighter);
   }
 
   &__content {
-    font-family: var(--active-font-family);
+    @include font(auto, auto, var(--active-font-family));
     padding: $modal-padding;
   }
 
   &__subtitle {
-    font-size: 1.2rem;
+    @include font(1.2rem, 300);
     text-align: center;
     margin: 0.8rem 0;
-    font-weight: 300;
   }
 
-  &__about,
   &__procedure-item {
-    text-align: justify;
-    font-size: 0.8rem;
+    @include font(0.8rem);
+    text-align: left;
     letter-spacing: 0.1rem;
   }
 
   &__procedure-list {
-    display: flex;
-    flex-direction: column;
     padding: $modal-padding;
     margin: 0 2rem;
   }
 
+  &__about,
   &__fact {
-    font-size: 0.8rem;
+    @include font(0.8rem);
     letter-spacing: 0.1rem;
     text-align: center;
   }
@@ -112,9 +109,5 @@ export default {
     width: 100%;
     text-align: center;
   }
-}
-
-.indent {
-  text-indent: 0.8rem;
 }
 </style>

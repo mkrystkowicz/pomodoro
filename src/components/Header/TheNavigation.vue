@@ -37,47 +37,42 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/_base.scss";
 .nav {
+  @include colors(darken($base-color, 3%));
   width: 18rem;
   padding: 0.2rem;
-  background-color: darken($base-color, 3%);
   border-radius: $base-border-radius;
   box-shadow: $base-box-shadow;
   overflow: hidden;
 
   &__list {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    @include flex(auto, space-between);
   }
 
   &__link-container {
+    @include flex;
     list-style: none;
-    display: flex;
-    align-items: center;
   }
 
   &__link {
-    font-size: 0.7rem;
+    @include font(0.7rem);
     padding: 1rem;
-    color: lighten($base-color, 100%);
+    @include colors(transparent, lighten($base-color, 100%));
     text-decoration: none;
     text-align: center;
     transition: 0.2s ease-out;
+    border-radius: $base-border-radius;
 
     &:hover {
-      color: lighten($base-color, 35%);
+      @include colors(transparent, lighten($base-color, 35%));
     }
 
     &.router-link-active {
-      background-color: var(--active-theme-color);
-      color: $black;
-      border-radius: $base-border-radius;
+      @include colors(var(--active-theme-color), $black);
       transition: 0.3s ease-in-out;
     }
 
     @media (min-width: 2000px) {
-      font-size: 1rem;
+      @include font(1rem);
     }
   }
 

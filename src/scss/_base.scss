@@ -1,4 +1,5 @@
 @import "@/scss/_variables.scss";
+@import "@/scss/_mixins.scss";
 
 * {
   margin: 0;
@@ -28,7 +29,7 @@ summary::after {
 summary::before {
   content: "○";
   padding-right: 0.5em;
-  color: $lighter-gray-color;
+  @include colors(transparent, $lighter-gray-color);
 }
 
 summary::-webkit-details-marker {
@@ -79,7 +80,7 @@ summary {
 }
 
 details[open] summary {
-  background: darken($lighter-gray-color, 15%);
+  @include colors(lighten($lighter-gray-color, 20%));
 }
 
 details[open] > summary::after {

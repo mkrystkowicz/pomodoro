@@ -5,19 +5,17 @@
 <style lang="scss" scoped>
 @import "@/scss/_base.scss";
 .logo {
-  font-size: $logo-font-size;
-  color: $white;
+  @include colors(transparent, $white);
+  @include font($logo-font-size, 600, var(--active-font-family), italic);
   text-decoration: none;
-  font-weight: 600;
   transition: 0.3s ease-out;
-  font-style: italic;
 
   &:hover {
-    color: darken($white, 35%);
+    @include colors(transparent, darken($white, 35%));
   }
 
   @media (min-width: 2000px) {
-    font-size: $wide-desktop-logo-font-size;
+    @include font($wide-desktop-logo-font-size);
   }
 }
 </style>

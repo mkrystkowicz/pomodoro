@@ -68,40 +68,34 @@ export default {
 @import "@/scss/_base.scss";
 
 .input-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  @include flex(auto, space-between);
   position: relative;
 
   &::after {
+    @include colors(transparent, $base-color);
+    @include font(0.8rem, lighter, var(--active-font-family));
     content: "min";
     display: block;
     position: absolute;
     top: -40%;
     right: 0;
-    font-size: 0.8rem;
-    font-family: var(--active-font-family);
-    font-weight: lighter;
-    color: $base-color;
     transform: rotate(45deg) translate(50%, -50%);
     margin-right: $modal-padding;
   }
 
   &__label {
-    font-size: $settings-input-label-font-size;
+    @include font($settings-input-label-font-size);
     margin-left: $modal-padding;
   }
 
   &__input {
+    @include colors($white);
+    @include font(auto, auto, var(--active-font-family));
     width: $settings-input-width;
-    background: $white;
     padding: 0.3rem;
     border: none;
     border-bottom: 2px solid $base-color;
-    color: $base-color;
     text-align: right;
-    font-family: var(--active-font-family);
     letter-spacing: 0.2rem;
     transition: all 0.2s ease-in-out;
     margin-right: $modal-padding;
@@ -125,22 +119,20 @@ export default {
 
 .radio-container__font-input-container,
 .radio-container__theme-input-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  @include flex(column, space-around);
   width: 2rem;
   height: 100%;
 }
 
 .radio-container__input-label {
-  font-size: 0.8rem;
+  @include font(0.8rem);
 }
 
 .radio-container__input {
   position: relative;
   cursor: pointer;
   &::after {
+    @include colors($base-color);
     content: "";
     display: block;
     width: 1.5rem;
@@ -150,11 +142,11 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: $base-color;
   }
 
   &:checked {
     &::before {
+      @include colors(var(--active-theme-color));
       content: "";
       display: block;
       width: 0.5rem;
@@ -164,7 +156,6 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: var(--active-theme-color);
       z-index: 1;
     }
   }
@@ -172,16 +163,14 @@ export default {
 
 .stats-input {
   @extend .input-container__input;
-
+  @include colors(transparent, $lighter-gray-color);
   width: 100%;
-  background: transparent;
   border-bottom-color: $lighter-gray-color;
-  color: $lighter-gray-color;
   text-align: left;
   letter-spacing: 0;
 
   &::placeholder {
-    color: $lighter-gray-color;
+    @include colors(transparent, $lighter-gray-color);
   }
 }
 </style>

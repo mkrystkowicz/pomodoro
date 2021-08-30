@@ -322,29 +322,26 @@ export default {
   position: relative;
 
   &__title {
-    font-weight: 300;
+    @include font(auto, 300);
   }
 
   &__saveFailed {
-    color: $red-color;
+    @include colors(transparent, $red-color);
+    @include font(0.8rem);
     text-align: center;
-    font-size: 0.8rem;
     transition: 0.3s ease-out;
   }
 }
 
 .settings__options {
-  font-family: var(--active-font-family);
+  @include flex(column, space-around, space-evenly);
+  @include font(auto, auto, var(--active-font-family));
   height: 15rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 }
 
 .radio-container {
-  font-family: var(--active-font-family);
-  display: flex;
-  align-items: center;
+  @include flex;
+  @include font(auto, auto, var(--active-font-family));
   margin: $modal-padding;
 
   &__settings-title {
@@ -352,20 +349,15 @@ export default {
   }
 
   &__inputs-list {
-    display: flex;
+    @include flex(auto, space-between);
     height: 3rem;
     width: 60%;
     margin-top: 1rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
   }
 }
 
 .settings__buttons {
+  @include flex(auto, space-evenly);
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 }
 </style>

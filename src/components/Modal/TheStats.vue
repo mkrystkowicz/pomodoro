@@ -137,26 +137,25 @@ export default {
 @import "@/scss/_base.scss";
 .stats {
   &__title {
-    font-weight: lighter;
+    @include font(auto, lighter);
   }
   &__content {
+    @include colors(transparent, $lighter-gray-color);
     padding: $modal-padding;
-    color: $lighter-gray-color;
   }
   &__list {
     list-style-type: none;
 
     &-is-empty {
-      font-family: var(--active-font-family);
+      @include font(1rem, auto, var(--active-font-family));
       text-align: center;
-      font-size: 1rem;
       margin-top: 1rem;
     }
   }
   &__item {
+    @include font(auto, auto, var(--active-font-family));
     margin-bottom: 10px;
     background: $white;
-    font-family: var(--active-font-family);
     cursor: pointer;
 
     &-title {
@@ -167,14 +166,14 @@ export default {
       transition: all 0.2s ease-out;
 
       &:hover {
-        background: darken($lighter-gray-color, 20%);
+        @include colors(lighten($lighter-gray-color, 20%));
       }
     }
 
     &-content {
+      @include colors($white);
+      @include font(0.8rem);
       padding: 5px 15px;
-      background: $white;
-      font-size: 0.8rem;
     }
 
     &-text-information {
@@ -182,13 +181,12 @@ export default {
     }
 
     &-text-information-amount {
-      font-size: 1rem;
+      @include font(1rem);
     }
 
     &-button-container {
+      @include flex(auto, flex-end);
       width: 100%;
-      display: flex;
-      justify-content: flex-end;
     }
   }
   &__button-container {
